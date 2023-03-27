@@ -10,5 +10,6 @@ namespace ArinaWorld
     {
         public string ID { get; set; }
         public string Name { get; set; }
+        public List<Province> ContiguousProvinces { get; set; } = new List<Province>();
     }
 }
