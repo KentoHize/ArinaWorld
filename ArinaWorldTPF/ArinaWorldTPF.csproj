@@ -12,4 +12,8 @@
     <ProjectReference Include="..\ArinaWorld\ArinaWorld.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="GameData\" />
+  </ItemGroup>
+
 </Project>
