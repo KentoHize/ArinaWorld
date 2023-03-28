@@ -53,7 +53,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { tsmAbout, tsmTest });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1184, 28);
+            menuStrip1.Size = new Size(1184, 27);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -81,22 +81,23 @@
             // tsmLoadData
             // 
             tsmLoadData.Name = "tsmLoadData";
-            tsmLoadData.Size = new Size(224, 26);
+            tsmLoadData.Size = new Size(152, 26);
             tsmLoadData.Text = "載入資料";
             tsmLoadData.Click += tsmLoadData_Click;
             // 
             // pnlAreaMap
             // 
-            pnlAreaMap.Location = new Point(12, 30);
+            pnlAreaMap.AutoScroll = true;
+            pnlAreaMap.Location = new Point(12, 43);
             pnlAreaMap.Name = "pnlAreaMap";
-            pnlAreaMap.Size = new Size(1091, 684);
+            pnlAreaMap.Size = new Size(1046, 810);
             pnlAreaMap.TabIndex = 2;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1184, 739);
+            ClientSize = new Size(1184, 865);
             Controls.Add(pnlAreaMap);
             Controls.Add(puc1);
             Controls.Add(menuStrip1);

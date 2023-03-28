@@ -15,12 +15,13 @@ namespace ArinaWorldTPF
     public partial class ProvinceUC : UserControl
     {
         private Province _Province;
-        public Province Province {
+        public Province Province
+        {
             get => _Province;
             set
             {
                 _Province = value;
-                if(_Province != null)
+                if (_Province != null)
                     lblName.Text = _Province.Name;
             }
         }
@@ -30,7 +31,7 @@ namespace ArinaWorldTPF
         }
 
         protected override void OnCreateControl()
-        {          
+        {
             base.OnCreateControl();
         }
     }

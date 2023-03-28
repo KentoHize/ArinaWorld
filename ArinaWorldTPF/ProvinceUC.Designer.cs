@@ -34,7 +34,7 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(35, 74);
+            lblName.Location = new Point(42, 73);
             lblName.Name = "lblName";
             lblName.Size = new Size(15, 19);
             lblName.TabIndex = 0;
@@ -46,7 +46,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(lblName);
             Name = "ProvinceUC";
-            Size = new Size(90, 105);
+            Size = new Size(105, 105);
             ResumeLayout(false);
             PerformLayout();
         }
