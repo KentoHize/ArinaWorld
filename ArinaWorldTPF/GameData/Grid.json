@@ -5,7 +5,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 1,
@@ -13,7 +17,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 2,
@@ -21,7 +29,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 3,
@@ -29,7 +41,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 4,
@@ -37,7 +53,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 5,
@@ -45,7 +65,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 6,
@@ -53,7 +77,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 7,
@@ -61,7 +89,11 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   },
   {
     "X": 8,
@@ -69,6 +101,34 @@
     "Owner": "1",
     "Altitude": null,
     "Terrain": 1,
-    "NatureImprovement": null
+    "NatureImprovement": null,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
+  },
+  {
+    "X": 9,
+    "Y": 9,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": 1,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
+  },
+  {
+    "X": 10,
+    "Y": 10,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": 1,
+    "Resource1": null,
+    "Resource1Quantity": 0,
+    "Resource2": null,
+    "Resource2Quantity": 0
   }
 ]

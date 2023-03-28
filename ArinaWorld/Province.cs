@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace ArinaWorld
 {
@@ -10,6 +6,12 @@ namespace ArinaWorld
     {
         public string ID { get; set; }
         public string Name { get; set; }
-        public List<Province> ContiguousProvinces { get; set; } = new List<Province>();
+        public long X { get; set; }
+        public long Y { get; set; }
+        public int AverageTemperature { get; set; }
+
+        public List<Grid> Grid { get; set; } = new List<Grid>();
+
+        //public List<Province> ContiguousProvinces { get; set; } = new List<Province>();
     }
 }

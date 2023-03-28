@@ -20,7 +20,8 @@ namespace ArinaWorldTPF
             set
             {
                 _Province = value;
-                lblName.Text = _Province.Name;
+                if(_Province != null)
+                    lblName.Text = _Province.Name;
             }
         }
         public ProvinceUC()

@@ -34,6 +34,7 @@
             tsmRun1 = new ToolStripMenuItem();
             tsmTest = new ToolStripMenuItem();
             tsmLoadData = new ToolStripMenuItem();
+            pnlAreaMap = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { tsmAbout, tsmTest });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(779, 28);
+            menuStrip1.Size = new Size(1184, 28);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -60,13 +61,13 @@
             // 
             tsmAbout.DropDownItems.AddRange(new ToolStripItem[] { tsmRun1 });
             tsmAbout.Name = "tsmAbout";
-            tsmAbout.Size = new Size(53, 24);
+            tsmAbout.Size = new Size(53, 23);
             tsmAbout.Text = "關於";
             // 
             // tsmRun1
             // 
             tsmRun1.Name = "tsmRun1";
-            tsmRun1.Size = new Size(224, 26);
+            tsmRun1.Size = new Size(152, 26);
             tsmRun1.Text = "產生檔案";
             tsmRun1.Click += tsmRun1_Click;
             // 
@@ -74,7 +75,7 @@
             // 
             tsmTest.DropDownItems.AddRange(new ToolStripItem[] { tsmLoadData });
             tsmTest.Name = "tsmTest";
-            tsmTest.Size = new Size(53, 24);
+            tsmTest.Size = new Size(53, 23);
             tsmTest.Text = "測試";
             // 
             // tsmLoadData
@@ -84,11 +85,19 @@
             tsmLoadData.Text = "載入資料";
             tsmLoadData.Click += tsmLoadData_Click;
             // 
+            // pnlAreaMap
+            // 
+            pnlAreaMap.Location = new Point(12, 30);
+            pnlAreaMap.Name = "pnlAreaMap";
+            pnlAreaMap.Size = new Size(1091, 684);
+            pnlAreaMap.TabIndex = 2;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(779, 721);
+            ClientSize = new Size(1184, 739);
+            Controls.Add(pnlAreaMap);
             Controls.Add(puc1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -109,5 +118,6 @@
         private ToolStripMenuItem tsmRun1;
         private ToolStripMenuItem tsmTest;
         private ToolStripMenuItem tsmLoadData;
+        private Panel pnlAreaMap;
     }
 }
