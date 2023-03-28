@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "X": 0,
+    "Y": 0,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 1,
+    "Y": 1,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 2,
+    "Y": 2,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 3,
+    "Y": 3,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 4,
+    "Y": 4,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 5,
+    "Y": 5,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 6,
+    "Y": 6,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 7,
+    "Y": 7,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  },
+  {
+    "X": 8,
+    "Y": 8,
+    "Owner": "1",
+    "Altitude": null,
+    "Terrain": 1,
+    "NatureImprovement": null
+  }
+]

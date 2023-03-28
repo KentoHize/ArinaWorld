@@ -1,50 +1,58 @@
 [
   {
     "ID": "1",
-    "Name": "省1",
-    "X": 0,
-    "Y": 0
+    "Name": "主要省",
+    "X": 250,
+    "Y": 250,
+    "AverageTemperature": 18
   },
   {
     "ID": "2",
-    "Name": "省2",
-    "X": 0,
-    "Y": 0
+    "Name": "後背沙漠",
+    "X": 250,
+    "Y": 50,
+    "AverageTemperature": 26
   },
   {
     "ID": "3",
-    "Name": "省3",
-    "X": 0,
-    "Y": 0
+    "Name": "西方森林",
+    "X": 50,
+    "Y": 250,
+    "AverageTemperature": 18
   },
   {
     "ID": "4",
-    "Name": "省4",
-    "X": 0,
-    "Y": 0
+    "Name": "東方高原",
+    "X": 400,
+    "Y": 250,
+    "AverageTemperature": 14
   },
   {
     "ID": "5",
-    "Name": "省5",
-    "X": 0,
-    "Y": 0
+    "Name": "北方平原",
+    "X": 200,
+    "Y": 500,
+    "AverageTemperature": 17
   },
   {
     "ID": "6",
-    "Name": "省6",
-    "X": 0,
-    "Y": 0
+    "Name": "北方森林",
+    "X": 400,
+    "Y": 500,
+    "AverageTemperature": 15
   },
   {
     "ID": "7",
-    "Name": "省7",
-    "X": 0,
-    "Y": 0
+    "Name": "北方山脈",
+    "X": 100,
+    "Y": 750,
+    "AverageTemperature": 13
   },
   {
     "ID": "8",
-    "Name": "省8",
-    "X": 0,
-    "Y": 0
+    "Name": "魔王區",
+    "X": 400,
+    "Y": 800,
+    "AverageTemperature": 13
   }
 ]
