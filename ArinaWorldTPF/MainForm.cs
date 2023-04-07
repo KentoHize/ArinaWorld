@@ -47,6 +47,7 @@ namespace ArinaWorldTPF
                 }
             }
 
+
             //æ¤Province
             using (FileStream fs = new FileStream(Path.Combine(Const.GameDataPath, "Provinces.json"), FileMode.Open))
             {
@@ -63,6 +64,8 @@ namespace ArinaWorldTPF
         public void RefreshAreaMap()
         {
             ProvinceUC puc;
+            //pnlAreaMap.Height = (int)Var.Map.Height;
+            pnlAreaMap.Width = (int)Var.Map.Width + 100;
             pnlAreaMap.Controls.Clear();
 
             for (int i = 0; i < Var.Map.Provinces.Count; i++)
