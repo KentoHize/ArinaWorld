@@ -112,8 +112,7 @@ namespace ArinaWorldTPF
                     Var.Map.Grids[i, j] = new Grid();
                 }
             }
-        }
-
+        }      
         private void MapForm_Paint(object sender, PaintEventArgs e)
         {
             DrawMap(e.Graphics);

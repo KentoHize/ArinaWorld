@@ -9,5 +9,7 @@ namespace ArinaWorldTPF
     public static class Const
     {
         public const string GameDataPath = @"C:\Programs\ArinaWorld\ArinaWorldTPF\GameData\";
+
+        public const string DataPath = @"C:\Programs\ArinaWorld\ArinaWorldTPF\Data\";
     }
 }

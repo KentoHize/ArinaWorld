@@ -42,10 +42,12 @@
             printPreviewToolStripMenuItem = new ToolStripMenuItem();
             printSetupToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator5 = new ToolStripSeparator();
-            exitToolStripMenuItem = new ToolStripMenuItem();
+            tsmQuit = new ToolStripMenuItem();
             statusStrip = new StatusStrip();
             toolStripStatusLabel = new ToolStripStatusLabel();
             toolTip = new ToolTip(components);
+            saveFileDialog = new SaveFileDialog();
+            openFileDialog = new OpenFileDialog();
             menuStrip.SuspendLayout();
             statusStrip.SuspendLayout();
             SuspendLayout();
@@ -57,16 +59,16 @@
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(9, 3, 0, 3);
-            menuStrip.Size = new Size(1657, 29);
+            menuStrip.Size = new Size(1657, 30);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "MenuStrip";
             // 
             // fileMenu
             // 
-            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator3, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator4, printToolStripMenuItem, printPreviewToolStripMenuItem, printSetupToolStripMenuItem, toolStripSeparator5, exitToolStripMenuItem });
+            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator3, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator4, printToolStripMenuItem, printPreviewToolStripMenuItem, printSetupToolStripMenuItem, toolStripSeparator5, tsmQuit });
             fileMenu.ImageTransparentColor = SystemColors.ActiveBorder;
             fileMenu.Name = "fileMenu";
-            fileMenu.Size = new Size(71, 23);
+            fileMenu.Size = new Size(71, 24);
             fileMenu.Text = "檔案(&F)";
             // 
             // newToolStripMenuItem
@@ -141,11 +143,12 @@
             toolStripSeparator5.Name = "toolStripSeparator5";
             toolStripSeparator5.Size = new Size(228, 6);
             // 
-            // exitToolStripMenuItem
+            // tsmQuit
             // 
-            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(231, 26);
-            exitToolStripMenuItem.Text = "結束(&X)";
+            tsmQuit.Name = "tsmQuit";
+            tsmQuit.Size = new Size(231, 26);
+            tsmQuit.Text = "結束(&X)";
+            tsmQuit.Click += tsmQuit_Click;
             // 
             // statusStrip
             // 
@@ -163,6 +166,10 @@
             toolStripStatusLabel.Name = "toolStripStatusLabel";
             toolStripStatusLabel.Size = new Size(39, 19);
             toolStripStatusLabel.Text = "狀態";
+            // 
+            // openFileDialog
+            // 
+            openFileDialog.FileName = "openFileDialog1";
             // 
             // EditorForm
             // 
@@ -202,8 +209,10 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmQuit;
         private System.Windows.Forms.ToolTip toolTip;
+        private SaveFileDialog saveFileDialog;
+        private OpenFileDialog openFileDialog;
     }
 }
 

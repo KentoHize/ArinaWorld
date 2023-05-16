@@ -37,5 +37,10 @@ namespace ArinaWorldTPF
         {
             SettingShop.SaveIniFile(typeof(Setting));
         }
+
+        private void tsmQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
