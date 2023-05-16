@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Aritiafel.Locations;
 
 
 namespace ArinaWorldTPF
@@ -21,7 +22,7 @@ namespace ArinaWorldTPF
         }
         private void EditorForm_Load(object sender, EventArgs e)
         {
-
+            SettingShop.LoadIniFile(typeof(Setting));
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,6 +31,11 @@ namespace ArinaWorldTPF
             mp.MdiParent = this;
             mp.WindowState = FormWindowState.Maximized;
             mp.Show();
+        }
+
+        private void EditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SettingShop.SaveIniFile(typeof(Setting));
         }
     }
 }

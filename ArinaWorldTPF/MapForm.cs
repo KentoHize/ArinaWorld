@@ -19,14 +19,13 @@ namespace ArinaWorldTPF
         public MapForm()
         {
             InitializeComponent();
-
         }
 
         Point RotateTrasform(Point p)
         {
-            double multipierY = Math.Cos((double)Var.RotateAngleY / 180);
-            double multipierZ1 = Math.Cos((double)Var.RotateAngleZ / 180);
-            double multipierZ2 = Math.Sin((double)Var.RotateAngleZ / 180);
+            double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
+            double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
+            double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
             p = new Point((int)(p.X * multipierZ1 - p.Y * multipierZ2), (int)((p.Y * multipierZ1 + p.X * multipierZ2) * multipierY));
             return p;
         }
@@ -43,25 +42,21 @@ namespace ArinaWorldTPF
                 for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
                 {
                     Point[] points = new Point[4];
-                    int radius = Var.AmplificationFactor * Var.Map.Grids.GetLength(0) / 2;
-                    int x = i * Var.AmplificationFactor - radius;
-                    int y = j * Var.AmplificationFactor - radius;
+                    int radius = Setting.AmplificationFactor * Var.Map.Grids.GetLength(0) / 2;
+                    int x = i * Setting.AmplificationFactor - radius;
+                    int y = j * Setting.AmplificationFactor - radius;
 
                     points[0] = new Point(x, y);
-                    points[1] = new Point(x + Var.AmplificationFactor, y);
-                    points[2] = new Point(x + Var.AmplificationFactor, y + Var.AmplificationFactor);
-                    points[3] = new Point(x, y + Var.AmplificationFactor);
+                    points[1] = new Point(x + Setting.AmplificationFactor, y);
+                    points[2] = new Point(x + Setting.AmplificationFactor, y + Setting.AmplificationFactor);
+                    points[3] = new Point(x, y + Setting.AmplificationFactor);
                     //Transform Rule
                     //x = xcosT - ysinT
                     //y = ycosT + xsinT
                     for (int k = 0; k < 4; k++)
                     {
                         points[k] = RotateTrasform(points[k]);
-                        points[k] = new Point(points[k].X + radius * 2, points[k].Y + radius * 2);
-                        //points[k] = new Point((int)(points[k].X * multipierZ1 - points[k].Y * multipierZ2),
-                        //    (int)(points[k].Y * multipierZ1 + points[k].X * multipierZ2));
-                        //points[k] = new Point(points[k].X, (int)(points[k].Y * multipierY));
-                        //points[k] = new Point(points[k].X + radius * 2, points[k].Y + radius * 2);
+                        points[k] = new Point(points[k].X + radius * 2, points[k].Y + radius * 2);                        
                     }
                     g.DrawPolygon(pen, points);
                 }
@@ -72,35 +67,35 @@ namespace ArinaWorldTPF
 
         public void RotateLeft(int amount = 10)
         {
-            Var.RotateAngleZ -= Math.Abs(amount);
+            Setting.RotateAngleZ -= Math.Abs(amount);
             Invalidate();
         }
 
         public void RotateRight(int amount = 10)
         {
-            Var.RotateAngleZ += Math.Abs(amount);
+            Setting.RotateAngleZ += Math.Abs(amount);
             Invalidate();
         }
 
         public void RotateUp(int amount = 10)
         {
-            if (Var.RotateAngleY > -180)
-                Var.RotateAngleY -= Math.Abs(amount);
+            if (Setting.RotateAngleY > -180)
+                Setting.RotateAngleY -= Math.Abs(amount);
             else
                 return;
-            if (Var.RotateAngleY < -180)
-                Var.RotateAngleY = -180;
+            if (Setting.RotateAngleY < -180)
+                Setting.RotateAngleY = -180;
             Invalidate();
         }
 
         public void RotateDown(int amount = 10)
         {
-            if (Var.RotateAngleY < 0)
-                Var.RotateAngleY += Math.Abs(amount);
+            if (Setting.RotateAngleY < 0)
+                Setting.RotateAngleY += Math.Abs(amount);
             else
                 return;
-            if (Var.RotateAngleY > 0)
-                Var.RotateAngleY = 0;
+            if (Setting.RotateAngleY > 0)
+                Setting.RotateAngleY = 0;
             Invalidate();
         }
 

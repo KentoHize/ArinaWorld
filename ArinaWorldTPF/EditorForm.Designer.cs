@@ -176,6 +176,7 @@
             Margin = new Padding(4);
             Name = "EditorForm";
             Text = "Arina World Editor";
+            FormClosing += EditorForm_FormClosing;
             Load += EditorForm_Load;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
