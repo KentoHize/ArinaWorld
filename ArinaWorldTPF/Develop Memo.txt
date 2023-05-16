@@ -1,0 +1,14 @@
+﻿系統架構
+
+
+Geo Structure
+Building、Item、Creatures(Geo Structure)
+Class System(Geo Structure)
+Character、AI etc
+
+Add Item Add Building Add Method
+
+讀取順序
+Static Sturcutre
+Added Features
+Editable Units
