@@ -15,30 +15,38 @@ namespace ArinaWorldTPF
 {
     public partial class MapForm : Form
     {
-        public Graphics graphic;
+        Point mousePosition;
         public MapForm()
         {
             InitializeComponent();
+
         }
 
-        public void DrawMap()
+        Point RotateTrasform(Point p)
+        {
+            double multipierY = Math.Cos((double)Var.RotateAngleY / 180);
+            double multipierZ1 = Math.Cos((double)Var.RotateAngleZ / 180);
+            double multipierZ2 = Math.Sin((double)Var.RotateAngleZ / 180);
+            p = new Point((int)(p.X * multipierZ1 - p.Y * multipierZ2), (int)((p.Y * multipierZ1 + p.X * multipierZ2) * multipierY));
+            return p;
+        }
+
+        public void DrawMap(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 2);
             if (Var.Map == null || Var.Map.Grids == null)
                 return;
-            
-            graphic.Clear(Color.White);
+
+            g.Clear(BackColor);            
             for (int i = 0; i < Var.Map.Grids.GetLength(0); i++)
             {
                 for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
-                {    
+                {
                     Point[] points = new Point[4];
-                    int radius = Var.AmplificationFactor * Var.Map.Grids.GetLength(0);                    
+                    int radius = Var.AmplificationFactor * Var.Map.Grids.GetLength(0) / 2;
                     int x = i * Var.AmplificationFactor - radius;
                     int y = j * Var.AmplificationFactor - radius;
-                    double multipierY = Math.Cos((double)Var.RotateAngleY / 180);
-                    double multipierZ1 = Math.Cos((double)Var.RotateAngleZ / 180);
-                    double multipierZ2 = Math.Sin((double)Var.RotateAngleZ / 180);
+
                     points[0] = new Point(x, y);
                     points[1] = new Point(x + Var.AmplificationFactor, y);
                     points[2] = new Point(x + Var.AmplificationFactor, y + Var.AmplificationFactor);
@@ -48,39 +56,52 @@ namespace ArinaWorldTPF
                     //y = ycosT + xsinT
                     for (int k = 0; k < 4; k++)
                     {
-                        points[k] = new Point((int)(points[k].X * multipierZ1 - points[k].Y * multipierZ2),
-                            (int)(points[k].Y * multipierZ1 + points[k].X * multipierZ2));
-                        points[k] = new Point(points[k].X, (int)(points[k].Y * multipierY));
-                        points[k] = new Point(points[k].X + radius, points[k].Y + radius);
+                        points[k] = RotateTrasform(points[k]);
+                        points[k] = new Point(points[k].X + radius * 2, points[k].Y + radius * 2);
+                        //points[k] = new Point((int)(points[k].X * multipierZ1 - points[k].Y * multipierZ2),
+                        //    (int)(points[k].Y * multipierZ1 + points[k].X * multipierZ2));
+                        //points[k] = new Point(points[k].X, (int)(points[k].Y * multipierY));
+                        //points[k] = new Point(points[k].X + radius * 2, points[k].Y + radius * 2);
                     }
-                    graphic.DrawPolygon(pen, points);
+                    g.DrawPolygon(pen, points);
                 }
             }
-            graphic.Flush();
+            g.Flush();
+
         }
 
-        public void RotateLeft()
+        public void RotateLeft(int amount = 10)
         {
-            Var.RotateAngleZ -= 10;
-            DrawMap();
+            Var.RotateAngleZ -= Math.Abs(amount);
+            Invalidate();
         }
 
-        public void RotateRight()
+        public void RotateRight(int amount = 10)
         {
-            Var.RotateAngleZ += 10;
-            DrawMap();
+            Var.RotateAngleZ += Math.Abs(amount);
+            Invalidate();
         }
 
-        public void RotateUp()
+        public void RotateUp(int amount = 10)
         {
-            Var.RotateAngleY -= 10;
-            DrawMap();
+            if (Var.RotateAngleY > -180)
+                Var.RotateAngleY -= Math.Abs(amount);
+            else
+                return;
+            if (Var.RotateAngleY < -180)
+                Var.RotateAngleY = -180;
+            Invalidate();
         }
 
-        public void RotateDown()
+        public void RotateDown(int amount = 10)
         {
-            Var.RotateAngleY += 10;
-            DrawMap();
+            if (Var.RotateAngleY < 0)
+                Var.RotateAngleY += Math.Abs(amount);
+            else
+                return;
+            if (Var.RotateAngleY > 0)
+                Var.RotateAngleY = 0;
+            Invalidate();
         }
 
         private void MapForm_Load(object sender, EventArgs e)
@@ -96,12 +117,11 @@ namespace ArinaWorldTPF
                     Var.Map.Grids[i, j] = new Grid();
                 }
             }
-            graphic = CreateGraphics();
         }
 
         private void MapForm_Paint(object sender, PaintEventArgs e)
         {
-            DrawMap();
+            DrawMap(e.Graphics);
         }
 
         private void MapForm_KeyPress(object sender, KeyPressEventArgs e)
@@ -112,7 +132,7 @@ namespace ArinaWorldTPF
                     RotateLeft();
                     break;
                 case 'e':
-                    RotateRight();                
+                    RotateRight();
                     break;
                 case 'w':
                     RotateUp();
@@ -121,6 +141,26 @@ namespace ArinaWorldTPF
                     RotateDown();
                     break;
 
+            }
+        }
+
+
+        private void MapForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (mousePosition != Point.Empty)
+                {
+                    if (mousePosition.X - e.X > 0)
+                        RotateRight(mousePosition.X - e.X);
+                    else if (mousePosition.X - e.X < 0)
+                        RotateLeft(e.X - mousePosition.X);
+                    if (mousePosition.Y - e.Y > 0)
+                        RotateDown(mousePosition.Y - e.Y);
+                    else if (mousePosition.Y - e.Y < 0)
+                        RotateUp(e.Y - mousePosition.Y);
+                }
+                mousePosition = e.Location;
             }
         }
     }

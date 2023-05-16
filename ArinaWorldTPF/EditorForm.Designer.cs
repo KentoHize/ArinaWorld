@@ -57,7 +57,7 @@
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(9, 3, 0, 3);
-            menuStrip.Size = new Size(948, 30);
+            menuStrip.Size = new Size(1657, 29);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "MenuStrip";
             // 
@@ -66,7 +66,7 @@
             fileMenu.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator3, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator4, printToolStripMenuItem, printPreviewToolStripMenuItem, printSetupToolStripMenuItem, toolStripSeparator5, exitToolStripMenuItem });
             fileMenu.ImageTransparentColor = SystemColors.ActiveBorder;
             fileMenu.Name = "fileMenu";
-            fileMenu.Size = new Size(71, 24);
+            fileMenu.Size = new Size(71, 23);
             fileMenu.Text = "檔案(&F)";
             // 
             // newToolStripMenuItem
@@ -151,10 +151,10 @@
             // 
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel });
-            statusStrip.Location = new Point(0, 637);
+            statusStrip.Location = new Point(0, 1030);
             statusStrip.Name = "statusStrip";
             statusStrip.Padding = new Padding(2, 0, 21, 0);
-            statusStrip.Size = new Size(948, 25);
+            statusStrip.Size = new Size(1657, 25);
             statusStrip.TabIndex = 2;
             statusStrip.Text = "StatusStrip";
             // 
@@ -168,7 +168,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(948, 662);
+            ClientSize = new Size(1657, 1055);
             Controls.Add(statusStrip);
             Controls.Add(menuStrip);
             IsMdiContainer = true;

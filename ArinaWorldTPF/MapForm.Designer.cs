@@ -35,6 +35,7 @@
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(721, 560);
+            DoubleBuffered = true;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "MapForm";
@@ -43,6 +44,7 @@
             Load += MapForm_Load;
             Paint += MapForm_Paint;
             KeyPress += MapForm_KeyPress;
+            MouseMove += MapForm_MouseMove;
             ResumeLayout(false);
         }
 
