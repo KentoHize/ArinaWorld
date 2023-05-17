@@ -53,10 +53,10 @@ namespace ArinaWorldTPF
             Var.Map = new Map();
             Var.Map.Height = 500;
             Var.Map.Width = 300;
-            Setting.AmplificationFactor = 2;
+            Setting.AmplificationFactor = 6;
             Geography.ProducePangeaGeography(Var.Map, 450, 250, 1,
                 CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 20);
-            Invalidate();
+            ActiveMdiChild.Invalidate();            
         }
     }
 }

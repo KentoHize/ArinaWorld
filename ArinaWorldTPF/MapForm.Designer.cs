@@ -43,6 +43,7 @@
             pibMain.Paint += pibMain_Paint;
             pibMain.MouseMove += pibMain_MouseMove;
             pibMain.MouseUp += pibMain_MouseUp;
+            pibMain.MouseWheel += pibMain_MouseWheel;
             // 
             // MapForm
             // 

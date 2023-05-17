@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
 using GameData;
+using System.Diagnostics;
 
 namespace ArinaWorldTPF
 {
@@ -21,6 +22,8 @@ namespace ArinaWorldTPF
         public MapForm()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
+            UpdateStyles();
         }
 
         Point TraslateTransform(Point p, int transformX, int transformY)
@@ -45,16 +48,14 @@ namespace ArinaWorldTPF
                 return;
 
             g.Clear(BackColor);
-            int maxGridLength = Var.Map.Grids.GetLength(0) > Var.Map.Grids.GetLength(1) ? Var.Map.Grids.GetLength(0) : Var.Map.Grids.GetLength(1);
-            int radius = Setting.AmplificationFactor * maxGridLength / 2;
-
             double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
             double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
             double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
-            //int transformX = Setting.TransformX + radius;
-            //int transformY = Setting.TransformY + radius;
-            int transformX = Var.Map.Grids.GetLength(0) * Setting.AmplificationFactor;
-            int transformY = Var.Map.Grids.GetLength(1) * Setting.AmplificationFactor;
+            int transformX = Setting.TransformX;
+            int transformY = Setting.TransformY;
+            //int transformX = Var.Map.Grids.GetLength(0) * Setting.AmplificationFactor;
+            //int transformY = Var.Map.Grids.GetLength(1) * Setting.AmplificationFactor;
+            
             for (int i = 0; i < Var.Map.Grids.GetLength(0); i++)
             {
                 for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
@@ -72,37 +73,42 @@ namespace ArinaWorldTPF
                         points[k] = AmplificationTransform(points[k], Setting.AmplificationFactor);
                         points[k] = RotateTransform(points[k], multipierY, multipierZ1, multipierZ2);
                         points[k] = TraslateTransform(points[k], transformX, transformY);
-
                     }
 
                     Brush brush;
-                    if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Grass"])
-                    {
-                        brush = new SolidBrush(Color.Green);
-                        g.FillPolygon(brush, points);
-                    }
-                    else
-                    {
-                        //brush = new SolidBrush(Color.Gray);
-                        g.DrawPolygon(pen, points);
-                        //g.FillPolygon(brush, points);
-                    }
+                    g.DrawPolygon(pen, points);
+                    //if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Grass"])
+                    //{
+                    //    brush = new SolidBrush(Color.Green);
+                    //    g.FillPolygon(brush, points);
+                    //}
+                    //else
+                    //{
+                    //    //brush = new SolidBrush(Color.Gray);
+                    //    g.DrawPolygon(pen, points);
+                    //    //g.FillPolygon(brush, points);
+                    //}
                 }
             }
             g.Flush();
 
         }
+        
+        public void Redraw()
+        {
+            pibMain.Invalidate();
+        }
 
         public void RotateLeft(int amount = 10)
         {
             Setting.RotateAngleZ -= Math.Abs(amount);
-            pibMain.Invalidate();
+            Redraw();
         }
 
         public void RotateRight(int amount = 10)
         {
             Setting.RotateAngleZ += Math.Abs(amount);
-            pibMain.Invalidate();
+            Redraw();
         }
 
         public void RotateUp(int amount = 10)
@@ -113,7 +119,7 @@ namespace ArinaWorldTPF
                 return;
             if (Setting.RotateAngleY < -180)
                 Setting.RotateAngleY = -180;
-            pibMain.Invalidate();
+            Redraw();
         }
 
         public void RotateDown(int amount = 10)
@@ -124,7 +130,7 @@ namespace ArinaWorldTPF
                 return;
             if (Setting.RotateAngleY > 0)
                 Setting.RotateAngleY = 0;
-            pibMain.Invalidate();
+            Redraw();
         }
 
         private void MapForm_Load(object sender, EventArgs e)
@@ -181,7 +187,7 @@ namespace ArinaWorldTPF
 
         private void pibMain_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Right)
             {
                 if (mousePosition != Point.Empty)
                 {
@@ -196,11 +202,33 @@ namespace ArinaWorldTPF
                 }
                 mousePosition = e.Location;
             }
+            else if(e.Button == MouseButtons.Left)
+            {
+                if (mousePosition != Point.Empty)
+                {
+                    Setting.TransformX += e.X - mousePosition.X;
+                    Setting.TransformY += e.Y - mousePosition.Y;
+                    Redraw();
+                }
+                mousePosition = e.Location;
+            }
         }
 
         private void pibMain_MouseUp(object sender, MouseEventArgs e)
         {
             mousePosition = Point.Empty;
+        }
+
+        private void pibMain_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+                Setting.AmplificationFactor += 2;
+            else
+            {
+                if (Setting.AmplificationFactor > 2)
+                    Setting.AmplificationFactor -= 2;
+            }
+            Redraw();            
         }
     }
 }
