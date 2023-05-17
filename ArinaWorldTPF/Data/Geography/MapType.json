@@ -1,0 +1,12 @@
+[
+  {
+    "ID": 1,
+    "Name": "Pangea",
+    "CName": "盤古大陸"
+  },
+  {
+    "ID": 2,
+    "Name": "Continent",
+    "CName": "大陸"
+  }
+]

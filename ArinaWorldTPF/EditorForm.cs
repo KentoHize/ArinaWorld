@@ -42,5 +42,10 @@ namespace ArinaWorldTPF
         {
             Application.Exit();
         }
+
+        private void tsmProducePangea_Click(object sender, EventArgs e)
+        {
+            Geography.ProducePangeaGeography(Var.Map);
+        }
     }
 }

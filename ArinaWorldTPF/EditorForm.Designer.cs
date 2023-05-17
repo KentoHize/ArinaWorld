@@ -43,6 +43,8 @@
             printSetupToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator5 = new ToolStripSeparator();
             tsmQuit = new ToolStripMenuItem();
+            tsmTest = new ToolStripMenuItem();
+            tsmProducePangea = new ToolStripMenuItem();
             statusStrip = new StatusStrip();
             toolStripStatusLabel = new ToolStripStatusLabel();
             toolTip = new ToolTip(components);
@@ -55,7 +57,7 @@
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu });
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, tsmTest });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(9, 3, 0, 3);
@@ -150,6 +152,20 @@
             tsmQuit.Text = "結束(&X)";
             tsmQuit.Click += tsmQuit_Click;
             // 
+            // tsmTest
+            // 
+            tsmTest.DropDownItems.AddRange(new ToolStripItem[] { tsmProducePangea });
+            tsmTest.Name = "tsmTest";
+            tsmTest.Size = new Size(71, 24);
+            tsmTest.Text = "測試(&T)";
+            // 
+            // tsmProducePangea
+            // 
+            tsmProducePangea.Name = "tsmProducePangea";
+            tsmProducePangea.Size = new Size(224, 26);
+            tsmProducePangea.Text = "產生單一大陸";
+            tsmProducePangea.Click += tsmProducePangea_Click;
+            // 
             // statusStrip
             // 
             statusStrip.ImageScalingSize = new Size(20, 20);
@@ -195,24 +211,26 @@
         #endregion
 
 
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripMenuItem printSetupToolStripMenuItem;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private System.Windows.Forms.ToolStripMenuItem fileMenu;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printPreviewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmQuit;
-        private System.Windows.Forms.ToolTip toolTip;
+        private MenuStrip menuStrip;
+        private StatusStrip statusStrip;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem printSetupToolStripMenuItem;
+        private ToolStripStatusLabel toolStripStatusLabel;
+        private ToolStripMenuItem fileMenu;
+        private ToolStripMenuItem newToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private ToolStripMenuItem printToolStripMenuItem;
+        private ToolStripMenuItem printPreviewToolStripMenuItem;
+        private ToolStripMenuItem tsmQuit;
+        private ToolTip toolTip;
         private SaveFileDialog saveFileDialog;
         private OpenFileDialog openFileDialog;
+        private ToolStripMenuItem tsmTest;
+        private ToolStripMenuItem tsmProducePangea;
     }
 }
 
