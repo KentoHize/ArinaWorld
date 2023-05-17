@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Aritiafel.Locations;
+using Aritiafel.Organizations.ArinaOrganization;
+using ArinaWorld;
 
 
 namespace ArinaWorldTPF
@@ -45,7 +47,11 @@ namespace ArinaWorldTPF
 
         private void tsmProducePangea_Click(object sender, EventArgs e)
         {
-            Geography.ProducePangeaGeography(Var.Map);
+            Var.Map = new Map();
+            Var.Map.Height = 500;
+            Var.Map.Width = 300;
+            Geography.ProducePangeaGeography(Var.Map, 450, 250, 1, 
+                CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 20);
         }
     }
 }

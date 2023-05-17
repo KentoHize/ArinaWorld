@@ -1,0 +1,58 @@
+[
+  {
+    "ID": 1,
+    "Name": "Grass",
+    "LowTemperature": 0,
+    "HighTemperature": 0,
+    "LowHumidity": 0,
+    "HighHumidity": 0
+  },
+  {
+    "ID": 2,
+    "Name": "Costal",
+    "LowTemperature": 0,
+    "HighTemperature": 0,
+    "LowHumidity": 0,
+    "HighHumidity": 0
+  },
+  {
+    "ID": 3,
+    "Name": "Sand",
+    "LowTemperature": 0,
+    "HighTemperature": 0,
+    "LowHumidity": 0,
+    "HighHumidity": 0
+  },
+  {
+    "ID": 4,
+    "Name": "Frozen Soil",
+    "LowTemperature": 0,
+    "HighTemperature": 0,
+    "LowHumidity": 0,
+    "HighHumidity": 0
+  },
+  {
+    "ID": 5,
+    "Name": "Lake",
+    "LowTemperature": 0,
+    "HighTemperature": 0,
+    "LowHumidity": 0,
+    "HighHumidity": 0
+  },
+  {
+    "ID": 6,
+    "Name": "Sea",
+    "LowTemperature": 0,
+    "HighTemperature": 0,
+    "LowHumidity": 0,
+    "HighHumidity": 0
+  },
+  {
+    "ID": 7,
+    "Name": "Rocky Ground",
+    "LowTemperature": 0,
+    "HighTemperature": 0,
+    "LowHumidity": 0,
+    "HighHumidity": 0
+  }
+]

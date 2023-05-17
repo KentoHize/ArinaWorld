@@ -1,15 +1,11 @@
 [
   {
-    "ID": 1,
-    "Name": "Grass"
-  },
-  {
     "ID": 2,
     "Name": "Plain"
   },
   {
     "ID": 3,
-    "Name": "Swamp"
+    "Name": "Basin"
   },
   {
     "ID": 4,
@@ -18,10 +14,6 @@
   {
     "ID": 5,
     "Name": "Mountain"
-  },
-  {
-    "ID": 6,
-    "Name": "Coastal"
   },
   {
     "ID": 7,
