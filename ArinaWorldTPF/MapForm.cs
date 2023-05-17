@@ -10,24 +10,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
+using GameData;
 
 namespace ArinaWorldTPF
 {
     public partial class MapForm : Form
     {
-        Point mousePosition;
+        Point mousePosition;        
+
         public MapForm()
         {
             InitializeComponent();
         }
 
-        Point RotateTrasform(Point p)
+        Point RotateTrasform(Point p, double multipierY, double multipierZ1, double multipierZ2)
         {
-            double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
-            double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
-            double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
-            p = new Point((int)(p.X * multipierZ1 - p.Y * multipierZ2), (int)((p.Y * multipierZ1 + p.X * multipierZ2) * multipierY));
-            return p;
+            return new Point((int)(p.X * multipierZ1 - p.Y * multipierZ2), (int)((p.Y * multipierZ1 + p.X * multipierZ2) * multipierY));
+            //return p;
         }
 
         public void DrawMap(Graphics g)
@@ -36,13 +35,17 @@ namespace ArinaWorldTPF
             if (Var.Map == null || Var.Map.Grids == null)
                 return;
 
-            g.Clear(BackColor);            
+            g.Clear(BackColor);
+            int maxGridLength = Var.Map.Grids.GetLength(0) > Var.Map.Grids.GetLength(1) ? Var.Map.Grids.GetLength(0) : Var.Map.Grids.GetLength(1);
+            int radius = Setting.AmplificationFactor * maxGridLength / 2;            
+            double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
+            double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
+            double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
             for (int i = 0; i < Var.Map.Grids.GetLength(0); i++)
             {
                 for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
                 {
-                    Point[] points = new Point[4];
-                    int radius = Setting.AmplificationFactor * Var.Map.Grids.GetLength(0) / 2;
+                    Point[] points = new Point[4];                    
                     int x = i * Setting.AmplificationFactor - radius;
                     int y = j * Setting.AmplificationFactor - radius;
 
@@ -55,10 +58,28 @@ namespace ArinaWorldTPF
                     //y = ycosT + xsinT
                     for (int k = 0; k < 4; k++)
                     {
-                        points[k] = RotateTrasform(points[k]);
+                        points[k] = RotateTrasform(points[k], multipierY, multipierZ1, multipierZ2);
                         points[k] = new Point(points[k].X + radius * 2, points[k].Y + radius * 2);                        
                     }
-                    g.DrawPolygon(pen, points);
+                    
+                    
+                    if (Var.Map.Grids[i, j] == null)
+                    {
+                        g.DrawPolygon(pen, points);
+                    }
+                    else
+                    {
+                        Brush brush;                        
+                        if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Grass"])
+                        {
+                            brush = new SolidBrush(Color.Green);
+                        }
+                        else
+                        {
+                            brush = new SolidBrush(Color.Gray);
+                        }                      
+                        g.FillPolygon(brush, points);
+                    }                    
                 }
             }
             g.Flush();
@@ -102,14 +123,17 @@ namespace ArinaWorldTPF
         private void MapForm_Load(object sender, EventArgs e)
         {
             //Temp
-            Var.Map = new Map();
-            Var.Map.Name = "TestMap";
-            Var.Map.Grids = new Grid[10, 10];
-            for (int i = 0; i < 10; i++)
+            if(Var.Map == null)
             {
-                for (int j = 0; j < 10; j++)
+                Var.Map = new Map();
+                Var.Map.Name = "TestMap";
+                Var.Map.Grids = new Grid[10, 10];
+                for (int i = 0; i < 10; i++)
                 {
-                    Var.Map.Grids[i, j] = new Grid();
+                    for (int j = 0; j < 10; j++)
+                    {
+                        Var.Map.Grids[i, j] = new Grid();
+                    }
                 }
             }
         }      

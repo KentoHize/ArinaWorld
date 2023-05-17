@@ -14,9 +14,9 @@ namespace ArinaWorldTPF
 {
     public static class Geography
     {
-        static Dictionary<string, int> terrains;
-        static Dictionary<string, int> surfaceFeatures;
-        static Dictionary<string, int> natureImprovements;
+        public static Dictionary<string, int> Terrains { get; set; }
+        public static Dictionary<string, int> SurfaceFeatures { get; set; }
+        public static Dictionary<string, int> NatureImprovements { get; set; }
         
         //public static void ProduceContinentGeography(Map map)
         //{
@@ -32,29 +32,29 @@ namespace ArinaWorldTPF
 
         public static void LoadRelatedData()
         {
-            terrains = new Dictionary<string, int>();
-            surfaceFeatures = new Dictionary<string, int>();
-            natureImprovements = new Dictionary<string, int>();
+            Terrains = new Dictionary<string, int>();
+            SurfaceFeatures = new Dictionary<string, int>();
+            NatureImprovements = new Dictionary<string, int>();
             //using (StreamReader sr = new StreamReader(Path.Combine(Const.DataPath, "Geography", "Terrain.json")))
             using (StreamReader sr = new StreamReader(Path.Combine(Const.GameDataPath, "Terrain.json")))
             {
                 Terrain[]? ts = JsonSerializer.Deserialize<Terrain[]>(sr.ReadToEnd());
                 foreach (Terrain t in ts)
-                    terrains.Add(t.Name, t.ID);
+                    Terrains.Add(t.Name, t.ID);
             }
 
             using (StreamReader sr = new StreamReader(Path.Combine(Const.GameDataPath, "SurfaceFeature.json")))
             {
                 SurfaceFeature[]? sfs = JsonSerializer.Deserialize<SurfaceFeature[]>(sr.ReadToEnd());
                 foreach (SurfaceFeature sf in sfs)
-                    surfaceFeatures.Add(sf.Name, sf.ID);
+                    SurfaceFeatures.Add(sf.Name, sf.ID);
             }
 
             using (StreamReader sr = new StreamReader(Path.Combine(Const.GameDataPath, "NatureImprovement.json")))
             {
                 NatureImprovement[]? nis = JsonSerializer.Deserialize<NatureImprovement[]>(sr.ReadToEnd());
                 foreach (NatureImprovement ni in nis)
-                    natureImprovements.Add(ni.Name, ni.ID);
+                    NatureImprovements.Add(ni.Name, ni.ID);
             }
         }
         public static void ProducePangeaGeography(Map map, int height, int width, 
@@ -64,17 +64,23 @@ namespace ArinaWorldTPF
             if (map == null)
                 throw new ArgumentNullException(nameof(map));
 
-            LoadRelatedData();
-            
             //大小
             //濕度
             //溫度
             //擠壓方向
-            for (long i = 0; i < map.Height; i++)
+            map.Grids = new Grid[map.Width, map.Height];
+            for (long i = 0; i < map.Width; i++)
             {
-                for (long j = 0; j < map.Width; j++)
+                for (long j = 0; j < map.Height; j++)
                 {
-
+                    map.Grids[i, j] = new Grid
+                    {
+                        Altitude = 10,
+                        Terrain = Terrains["Plain"],
+                        SurfaceFeature = SurfaceFeatures["Grass"],
+                        X = i,
+                        Y = j
+                    };
                 }
             }
         }

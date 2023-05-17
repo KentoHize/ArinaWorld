@@ -25,6 +25,9 @@ namespace ArinaWorldTPF
         private void EditorForm_Load(object sender, EventArgs e)
         {
             SettingShop.LoadIniFile(typeof(Setting));
+
+            //Temp
+            Geography.LoadRelatedData();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,8 +53,10 @@ namespace ArinaWorldTPF
             Var.Map = new Map();
             Var.Map.Height = 500;
             Var.Map.Width = 300;
+            Setting.AmplificationFactor = 2;
             Geography.ProducePangeaGeography(Var.Map, 450, 250, 1, 
                 CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 20);
+            Invalidate();
         }
     }
 }

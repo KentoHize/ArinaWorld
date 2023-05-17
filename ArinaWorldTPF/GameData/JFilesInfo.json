@@ -96,6 +96,24 @@
           "IsUnique": false
         },
         {
+          "Name": "SurfaceFeature",
+          "IsKey": false,
+          "IsNullable": false,
+          "Type": "Integer",
+          "Choices": [],
+          "FKTable": "SurfaceFeature",
+          "FKColumn": "ID",
+          "NumberOfRows": 1,
+          "Display": false,
+          "RegularExpression": "",
+          "Description": "",
+          "MinValue": "",
+          "MaxValue": "",
+          "MaxLength": 0,
+          "AutoGenerateKey": false,
+          "IsUnique": false
+        },
+        {
           "Name": "NatureImprovement",
           "IsKey": false,
           "IsNullable": true,
