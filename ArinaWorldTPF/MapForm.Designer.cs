@@ -28,13 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            pibMain = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pibMain).BeginInit();
             SuspendLayout();
+            // 
+            // pibMain
+            // 
+            pibMain.Dock = DockStyle.Fill;
+            pibMain.Location = new Point(0, 0);
+            pibMain.Name = "pibMain";
+            pibMain.Size = new Size(721, 560);
+            pibMain.TabIndex = 0;
+            pibMain.TabStop = false;
+            pibMain.Paint += pibMain_Paint;
+            pibMain.MouseMove += pibMain_MouseMove;
+            pibMain.MouseUp += pibMain_MouseUp;
             // 
             // MapForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(721, 560);
+            Controls.Add(pibMain);
             DoubleBuffered = true;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -44,10 +59,12 @@
             Load += MapForm_Load;
             Paint += MapForm_Paint;
             KeyPress += MapForm_KeyPress;
-            MouseMove += MapForm_MouseMove;
+            ((System.ComponentModel.ISupportInitialize)pibMain).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private PictureBox pibMain;
     }
 }

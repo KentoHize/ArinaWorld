@@ -61,7 +61,7 @@
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(9, 3, 0, 3);
-            menuStrip.Size = new Size(1657, 30);
+            menuStrip.Size = new Size(1902, 29);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "MenuStrip";
             // 
@@ -70,7 +70,7 @@
             fileMenu.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator3, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator4, printToolStripMenuItem, printPreviewToolStripMenuItem, printSetupToolStripMenuItem, toolStripSeparator5, tsmQuit });
             fileMenu.ImageTransparentColor = SystemColors.ActiveBorder;
             fileMenu.Name = "fileMenu";
-            fileMenu.Size = new Size(71, 24);
+            fileMenu.Size = new Size(71, 23);
             fileMenu.Text = "檔案(&F)";
             // 
             // newToolStripMenuItem
@@ -156,13 +156,13 @@
             // 
             tsmTest.DropDownItems.AddRange(new ToolStripItem[] { tsmProducePangea });
             tsmTest.Name = "tsmTest";
-            tsmTest.Size = new Size(71, 24);
+            tsmTest.Size = new Size(71, 23);
             tsmTest.Text = "測試(&T)";
             // 
             // tsmProducePangea
             // 
             tsmProducePangea.Name = "tsmProducePangea";
-            tsmProducePangea.Size = new Size(224, 26);
+            tsmProducePangea.Size = new Size(182, 26);
             tsmProducePangea.Text = "產生單一大陸";
             tsmProducePangea.Click += tsmProducePangea_Click;
             // 
@@ -170,10 +170,10 @@
             // 
             statusStrip.ImageScalingSize = new Size(20, 20);
             statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel });
-            statusStrip.Location = new Point(0, 1030);
+            statusStrip.Location = new Point(0, 1008);
             statusStrip.Name = "statusStrip";
             statusStrip.Padding = new Padding(2, 0, 21, 0);
-            statusStrip.Size = new Size(1657, 25);
+            statusStrip.Size = new Size(1902, 25);
             statusStrip.TabIndex = 2;
             statusStrip.Text = "StatusStrip";
             // 
@@ -191,7 +191,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1657, 1055);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(statusStrip);
             Controls.Add(menuStrip);
             IsMdiContainer = true;

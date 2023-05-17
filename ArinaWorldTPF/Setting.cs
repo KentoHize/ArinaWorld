@@ -10,6 +10,8 @@ namespace ArinaWorldTPF
     {
         public static int RotateAngleZ { get; set; } = 0;
         public static int RotateAngleY { get; set; } = 0;
+        public static int TransformX { get; set; } = 0;
+        public static int TransformY { get; set; } = 0;
         public static int AmplificationFactor { get; set; } = 50;
     }
 }

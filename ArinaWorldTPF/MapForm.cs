@@ -16,17 +16,26 @@ namespace ArinaWorldTPF
 {
     public partial class MapForm : Form
     {
-        Point mousePosition;        
+        Point mousePosition;
 
         public MapForm()
         {
             InitializeComponent();
         }
 
-        Point RotateTrasform(Point p, double multipierY, double multipierZ1, double multipierZ2)
+        Point TraslateTransform(Point p, int transformX, int transformY)
+        {
+            return new Point(p.X + transformX, p.Y + transformY);
+        }
+
+        Point RotateTransform(Point p, double multipierY, double multipierZ1, double multipierZ2)
         {
             return new Point((int)(p.X * multipierZ1 - p.Y * multipierZ2), (int)((p.Y * multipierZ1 + p.X * multipierZ2) * multipierY));
-            //return p;
+        }
+
+        Point AmplificationTransform(Point p, int amplificationFactor)
+        {
+            return new Point(p.X * amplificationFactor, p.Y * amplificationFactor);
         }
 
         public void DrawMap(Graphics g)
@@ -37,49 +46,47 @@ namespace ArinaWorldTPF
 
             g.Clear(BackColor);
             int maxGridLength = Var.Map.Grids.GetLength(0) > Var.Map.Grids.GetLength(1) ? Var.Map.Grids.GetLength(0) : Var.Map.Grids.GetLength(1);
-            int radius = Setting.AmplificationFactor * maxGridLength / 2;            
+            int radius = Setting.AmplificationFactor * maxGridLength / 2;
+
             double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
             double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
             double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
+            //int transformX = Setting.TransformX + radius;
+            //int transformY = Setting.TransformY + radius;
+            int transformX = Var.Map.Grids.GetLength(0) * Setting.AmplificationFactor;
+            int transformY = Var.Map.Grids.GetLength(1) * Setting.AmplificationFactor;
             for (int i = 0; i < Var.Map.Grids.GetLength(0); i++)
             {
                 for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
                 {
-                    Point[] points = new Point[4];                    
-                    int x = i * Setting.AmplificationFactor - radius;
-                    int y = j * Setting.AmplificationFactor - radius;
-
-                    points[0] = new Point(x, y);
-                    points[1] = new Point(x + Setting.AmplificationFactor, y);
-                    points[2] = new Point(x + Setting.AmplificationFactor, y + Setting.AmplificationFactor);
-                    points[3] = new Point(x, y + Setting.AmplificationFactor);
+                    Point[] points = new Point[4];
+                    points[0] = new Point(i, j);
+                    points[1] = new Point(i + 1, j);
+                    points[2] = new Point(i + 1, j + 1);
+                    points[3] = new Point(i, j + 1);
                     //Transform Rule
                     //x = xcosT - ysinT
                     //y = ycosT + xsinT
                     for (int k = 0; k < 4; k++)
                     {
-                        points[k] = RotateTrasform(points[k], multipierY, multipierZ1, multipierZ2);
-                        points[k] = new Point(points[k].X + radius * 2, points[k].Y + radius * 2);                        
+                        points[k] = AmplificationTransform(points[k], Setting.AmplificationFactor);
+                        points[k] = RotateTransform(points[k], multipierY, multipierZ1, multipierZ2);
+                        points[k] = TraslateTransform(points[k], transformX, transformY);
+
                     }
-                    
-                    
-                    if (Var.Map.Grids[i, j] == null)
+
+                    Brush brush;
+                    if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Grass"])
                     {
-                        g.DrawPolygon(pen, points);
+                        brush = new SolidBrush(Color.Green);
+                        g.FillPolygon(brush, points);
                     }
                     else
                     {
-                        Brush brush;                        
-                        if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Grass"])
-                        {
-                            brush = new SolidBrush(Color.Green);
-                        }
-                        else
-                        {
-                            brush = new SolidBrush(Color.Gray);
-                        }                      
-                        g.FillPolygon(brush, points);
-                    }                    
+                        //brush = new SolidBrush(Color.Gray);
+                        g.DrawPolygon(pen, points);
+                        //g.FillPolygon(brush, points);
+                    }
                 }
             }
             g.Flush();
@@ -89,13 +96,13 @@ namespace ArinaWorldTPF
         public void RotateLeft(int amount = 10)
         {
             Setting.RotateAngleZ -= Math.Abs(amount);
-            Invalidate();
+            pibMain.Invalidate();
         }
 
         public void RotateRight(int amount = 10)
         {
             Setting.RotateAngleZ += Math.Abs(amount);
-            Invalidate();
+            pibMain.Invalidate();
         }
 
         public void RotateUp(int amount = 10)
@@ -106,7 +113,7 @@ namespace ArinaWorldTPF
                 return;
             if (Setting.RotateAngleY < -180)
                 Setting.RotateAngleY = -180;
-            Invalidate();
+            pibMain.Invalidate();
         }
 
         public void RotateDown(int amount = 10)
@@ -117,17 +124,20 @@ namespace ArinaWorldTPF
                 return;
             if (Setting.RotateAngleY > 0)
                 Setting.RotateAngleY = 0;
-            Invalidate();
+            pibMain.Invalidate();
         }
 
         private void MapForm_Load(object sender, EventArgs e)
         {
             //Temp
-            if(Var.Map == null)
+            if (Var.Map == null)
             {
                 Var.Map = new Map();
                 Var.Map.Name = "TestMap";
                 Var.Map.Grids = new Grid[10, 10];
+                Setting.AmplificationFactor = 50;
+                Setting.TransformX = 10;
+                Setting.TransformY = 10;
                 for (int i = 0; i < 10; i++)
                 {
                     for (int j = 0; j < 10; j++)
@@ -136,10 +146,10 @@ namespace ArinaWorldTPF
                     }
                 }
             }
-        }      
+        }
         private void MapForm_Paint(object sender, PaintEventArgs e)
         {
-            DrawMap(e.Graphics);
+
         }
 
         private void MapForm_KeyPress(object sender, KeyPressEventArgs e)
@@ -163,7 +173,13 @@ namespace ArinaWorldTPF
         }
 
 
-        private void MapForm_MouseMove(object sender, MouseEventArgs e)
+        private void pibMain_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.SmoothingMode = SmoothingMode.HighSpeed;
+            DrawMap(e.Graphics);
+        }
+
+        private void pibMain_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -180,6 +196,11 @@ namespace ArinaWorldTPF
                 }
                 mousePosition = e.Location;
             }
+        }
+
+        private void pibMain_MouseUp(object sender, MouseEventArgs e)
+        {
+            mousePosition = Point.Empty;
         }
     }
 }
