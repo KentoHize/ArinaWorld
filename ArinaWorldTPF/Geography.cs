@@ -14,9 +14,9 @@ namespace ArinaWorldTPF
 {
     public static class Geography
     {
-        public static Dictionary<string, int> Terrains { get; set; }
-        public static Dictionary<string, int> SurfaceFeatures { get; set; }
-        public static Dictionary<string, int> NatureImprovements { get; set; }
+        public static Dictionary<string, int>? Terrains { get; set; }
+        public static Dictionary<string, int>? SurfaceFeatures { get; set; }
+        public static Dictionary<string, int>? NatureImprovements { get; set; }
         
         //public static void ProduceContinentGeography(Map map)
         //{
@@ -76,8 +76,8 @@ namespace ArinaWorldTPF
                     map.Grids[i, j] = new Grid
                     {
                         Altitude = 10,
-                        Terrain = Terrains["Plain"],
-                        SurfaceFeature = SurfaceFeatures["Grass"],
+                        Terrain = Terrains["Sea"],
+                        SurfaceFeature = SurfaceFeatures["Sea"],
                         X = i,
                         Y = j
                     };

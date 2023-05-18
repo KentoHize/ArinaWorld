@@ -53,9 +53,7 @@ namespace ArinaWorldTPF
             double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
             int transformX = Setting.TransformX;
             int transformY = Setting.TransformY;
-            //int transformX = Var.Map.Grids.GetLength(0) * Setting.AmplificationFactor;
-            //int transformY = Var.Map.Grids.GetLength(1) * Setting.AmplificationFactor;
-            
+
             for (int i = 0; i < Var.Map.Grids.GetLength(0); i++)
             {
                 for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
@@ -76,24 +74,29 @@ namespace ArinaWorldTPF
                     }
 
                     Brush brush;
-                    g.DrawPolygon(pen, points);
-                    //if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Grass"])
-                    //{
-                    //    brush = new SolidBrush(Color.Green);
-                    //    g.FillPolygon(brush, points);
-                    //}
-                    //else
-                    //{
-                    //    //brush = new SolidBrush(Color.Gray);
-                    //    g.DrawPolygon(pen, points);
-                    //    //g.FillPolygon(brush, points);
-                    //}
+                    //g.DrawPolygon(pen, points);
+                    if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Sea"])
+                    {
+                        brush = new SolidBrush(Color.Blue);
+                        g.FillPolygon(brush, points);
+                    }
+                    else if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Grass"])
+                    {
+                        brush = new SolidBrush(Color.Green);
+                        g.FillPolygon(brush, points);
+                    }
+                    else
+                    {
+                        //brush = new SolidBrush(Color.Gray);
+                        g.DrawPolygon(pen, points);
+                        //    //g.FillPolygon(brush, points);
+                    }
                 }
             }
             g.Flush();
 
         }
-        
+
         public void Redraw()
         {
             pibMain.Invalidate();
@@ -153,10 +156,7 @@ namespace ArinaWorldTPF
                 }
             }
         }
-        private void MapForm_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
 
         private void MapForm_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -202,7 +202,7 @@ namespace ArinaWorldTPF
                 }
                 mousePosition = e.Location;
             }
-            else if(e.Button == MouseButtons.Left)
+            else if (e.Button == MouseButtons.Left)
             {
                 if (mousePosition != Point.Empty)
                 {
@@ -225,10 +225,10 @@ namespace ArinaWorldTPF
                 Setting.AmplificationFactor += 2;
             else
             {
-                if (Setting.AmplificationFactor > 2)
+                if (Setting.AmplificationFactor > 20)
                     Setting.AmplificationFactor -= 2;
             }
-            Redraw();            
+            Redraw();
         }
     }
 }

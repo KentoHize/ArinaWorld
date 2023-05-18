@@ -50,15 +50,16 @@
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(721, 560);
+            ControlBox = false;
             Controls.Add(pibMain);
             DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "MapForm";
             Text = "MapForm";
             WindowState = FormWindowState.Maximized;
             Load += MapForm_Load;
-            Paint += MapForm_Paint;
             KeyPress += MapForm_KeyPress;
             ((System.ComponentModel.ISupportInitialize)pibMain).EndInit();
             ResumeLayout(false);

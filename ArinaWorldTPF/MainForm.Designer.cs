@@ -69,7 +69,6 @@
             tsmRun1.Name = "tsmRun1";
             tsmRun1.Size = new Size(152, 26);
             tsmRun1.Text = "產生檔案";
-            tsmRun1.Click += tsmRun1_Click;
             // 
             // tsmTest
             // 
@@ -104,7 +103,6 @@
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "Form1";
-            Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
