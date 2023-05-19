@@ -51,11 +51,11 @@ namespace ArinaWorldTPF
         private void tsmProducePangea_Click(object sender, EventArgs e)
         {
             Var.Map = new Map();
-            Var.Map.Height = 500;
-            Var.Map.Width = 300;
+            Var.Map.Height = 200;
+            Var.Map.Width = 200;
             Setting.AmplificationFactor = 50;
-            Geography.ProducePangeaGeography(Var.Map, 450, 250, 1,
-                CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 20);
+            Geography.ProducePangeaGeography(Var.Map, 100, 100, 1,
+                CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 1000);
             if (ActiveMdiChild != null)
                 ActiveMdiChild.Invalidate();
         }

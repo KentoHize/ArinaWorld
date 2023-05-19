@@ -91,6 +91,8 @@ namespace ArinaWorldTPF
                         g.DrawPolygon(pen, points);
                         //    //g.FillPolygon(brush, points);
                     }
+                    g.DrawString(Var.Map.Grids[i, j].Altitude.ToString(), new Font("Consolas", 16),
+                        new SolidBrush(Color.Black), points[0]);
                 }
             }
             g.Flush();
