@@ -23,7 +23,7 @@ namespace ArinaWorldTPF
         public MapForm()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
+            //SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
             UpdateStyles();
         }
 
@@ -45,9 +45,8 @@ namespace ArinaWorldTPF
         Point RotateTransformInverse(Point p, double multipierY, double multipierZ1, double multipierZ2)
         {
             Point r = new Point(p.X, (int)(p.Y / multipierY));            
-            r = new Point((int)((r.X * multipierZ1 + r.Y * multipierZ2) / (multipierZ1 * multipierZ1 + multipierZ2 * multipierZ2)),
-                (int)((r.Y * multipierZ1 - r.X * multipierZ2) / (multipierZ1 * multipierZ1 + multipierZ2 * multipierZ2)));
-            return r;
+            return new Point((int)((r.X * multipierZ1 + r.Y * multipierZ2) / (multipierZ1 * multipierZ1 + multipierZ2 * multipierZ2)),
+                (int)((r.Y * multipierZ1 - r.X * multipierZ2) / (multipierZ1 * multipierZ1 + multipierZ2 * multipierZ2)));            
         }
 
         Point AmplificationTransform(Point p, int amplificationFactor)
@@ -62,21 +61,55 @@ namespace ArinaWorldTPF
 
         public void DrawMap(Graphics g)
         {
+            //BufferedGraphicsManager bgm = BufferedGraphicsManager.Current.;
+            //BufferedGraphics buffergraph = new BufferedGraphicsContext();
+            //BufferedGraphicsContext context = BufferedGraphicsManager.Current;
             Pen pen = new Pen(Color.Black, 2);
             Point[] points;
             if (Var.Map == null || Var.Map.Grids == null)
                 return;
 
-            g.Clear(BackColor);
             double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
             double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
             double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
             int transformX = Setting.TransformX;
             int transformY = Setting.TransformY;
-
-            for (int i = 0; i < Var.Map.Grids.GetLength(0); i++)
+            
+            //計算框內的格子邊界
+            Point[] vertex = { new Point(0, 0), new Point(pibMain.Width + 1, 0), new Point(0, pibMain.Height + 1), new Point(pibMain.Width + 1, pibMain.Height + 1)};
+            
+            for(int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
+                vertex[i] = TraslateTransformInverse(vertex[i], transformX, transformY);
+                vertex[i] = RotateTransformInverse(vertex[i], multipierY, multipierZ1, multipierZ2);
+                vertex[i] = AmplificationTransformInverse(vertex[i], Setting.AmplificationFactor);
+            }
+
+            int minX = Var.Map.Grids.GetLength(0), minY = Var.Map.Grids.GetLength(1), maxX = 0, maxY = 0;
+            for(int i = 0; i < 4; i++)
+            {
+                if (minX > vertex[i].X)
+                    minX = vertex[i].X;
+                if (minY > vertex[i].Y)
+                    minY = vertex[i].Y;
+                if (maxX < vertex[i].X)
+                    maxX = vertex[i].X;
+                if (maxY < vertex[i].Y)
+                    maxY = vertex[i].Y;
+            }
+            if (minX < 0)
+                minX = 0;
+            if (minY < 0)
+                minY = 0;
+            if (maxX >= Var.Map.Grids.GetLength(0))
+                maxX = Var.Map.Grids.GetLength(0) - 1;
+            if (maxY >= Var.Map.Grids.GetLength(1))
+                maxY = Var.Map.Grids.GetLength(1) - 1;
+            
+            g.Clear(BackColor);
+            for (int i = minX; i <= maxX; i++)
+            {
+                for (int j = minY; j <= maxY; j++)
                 {
                     points = new Point[4];
                     points[0] = new Point(i, j);
@@ -112,8 +145,8 @@ namespace ArinaWorldTPF
                         //    //g.FillPolygon(brush, points);
                     }
                     
-                    g.DrawString(Var.Map.Grids[i, j].Altitude.ToString(), new Font("Consolas", 16),
-                        new SolidBrush(Color.Black), points[0]);
+                    //g.DrawString(Var.Map.Grids[i, j].Altitude.ToString(), new Font("Consolas", 16),
+                    //    new SolidBrush(Color.Black), points[0]);
                 }
             }
 

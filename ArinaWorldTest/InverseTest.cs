@@ -74,7 +74,7 @@ namespace ArinaWorldTest
 
         Point AmplificationTransformInverse(Point p, int amplificationFactor)
         {
-            return new Point(p.X / amplificationFactor, p.Y / amplificationFactor);
+            return new Point((int)Math.Round((double)p.X / amplificationFactor), (int)Math.Round((double)p.Y / amplificationFactor));
         }
 
 
