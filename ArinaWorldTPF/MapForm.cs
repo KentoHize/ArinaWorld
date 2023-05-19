@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using System.Net.NetworkInformation;
 using GameData;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace ArinaWorldTPF
 {
@@ -31,9 +32,22 @@ namespace ArinaWorldTPF
             return new Point(p.X + transformX, p.Y + transformY);
         }
 
+        Point TraslateTransformInverse(Point p, int transformX, int transformY)
+        {
+            return new Point(p.X - transformX, p.Y - transformY);
+        }
+
         Point RotateTransform(Point p, double multipierY, double multipierZ1, double multipierZ2)
         {
             return new Point((int)(p.X * multipierZ1 - p.Y * multipierZ2), (int)((p.Y * multipierZ1 + p.X * multipierZ2) * multipierY));
+        }
+
+        Point RotateTransformInverse(Point p, double multipierY, double multipierZ1, double multipierZ2)
+        {
+            Point r = new Point(p.X, (int)(p.Y / multipierY));            
+            r = new Point((int)((r.X * multipierZ1 + r.Y * multipierZ2) / (multipierZ1 * multipierZ1 + multipierZ2 * multipierZ2)),
+                (int)((r.Y * multipierZ1 - r.X * multipierZ2) / (multipierZ1 * multipierZ1 + multipierZ2 * multipierZ2)));
+            return r;
         }
 
         Point AmplificationTransform(Point p, int amplificationFactor)
@@ -41,9 +55,15 @@ namespace ArinaWorldTPF
             return new Point(p.X * amplificationFactor, p.Y * amplificationFactor);
         }
 
+        Point AmplificationTransformInverse(Point p, int amplificationFactor)
+        {
+            return new Point(p.X / amplificationFactor, p.Y / amplificationFactor);
+        }
+
         public void DrawMap(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 2);
+            Point[] points;
             if (Var.Map == null || Var.Map.Grids == null)
                 return;
 
@@ -58,7 +78,7 @@ namespace ArinaWorldTPF
             {
                 for (int j = 0; j < Var.Map.Grids.GetLength(1); j++)
                 {
-                    Point[] points = new Point[4];
+                    points = new Point[4];
                     points[0] = new Point(i, j);
                     points[1] = new Point(i + 1, j);
                     points[2] = new Point(i + 1, j + 1);
@@ -91,12 +111,25 @@ namespace ArinaWorldTPF
                         g.DrawPolygon(pen, points);
                         //    //g.FillPolygon(brush, points);
                     }
+                    
                     g.DrawString(Var.Map.Grids[i, j].Altitude.ToString(), new Font("Consolas", 16),
                         new SolidBrush(Color.Black), points[0]);
                 }
             }
-            g.Flush();
 
+            points = new Point[4];
+            points[0] = new Point(Var.SelectedBlock.X, Var.SelectedBlock.Y);
+            points[1] = new Point(Var.SelectedBlock.X + 1, Var.SelectedBlock.Y);
+            points[2] = new Point(Var.SelectedBlock.X + 1, Var.SelectedBlock.Y + 1);
+            points[3] = new Point(Var.SelectedBlock.X, Var.SelectedBlock.Y + 1);
+            for (int k = 0; k < 4; k++)
+            {
+                points[k] = AmplificationTransform(points[k], Setting.AmplificationFactor);
+                points[k] = RotateTransform(points[k], multipierY, multipierZ1, multipierZ2);
+                points[k] = TraslateTransform(points[k], transformX, transformY);
+            }
+            g.DrawPolygon(new Pen(Color.White, 2), points);
+            g.Flush();
         }
 
         public void Redraw()
@@ -158,7 +191,7 @@ namespace ArinaWorldTPF
                 }
             }
         }
-       
+
 
         private void MapForm_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -231,6 +264,28 @@ namespace ArinaWorldTPF
                     Setting.AmplificationFactor -= 2;
             }
             Redraw();
+        }
+
+        private void pibMain_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (Var.Map == null)
+                return;
+            //計算位置
+            double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
+            double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
+            double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
+            int transformX = Setting.TransformX;
+            int transformY = Setting.TransformY;
+
+            
+            Point p = new Point(e.X, e.Y);
+            p = TraslateTransformInverse(p, transformX, transformY);
+            p = RotateTransformInverse(p, multipierY, multipierZ1, multipierZ2);
+            p = AmplificationTransformInverse(p, Setting.AmplificationFactor);
+
+            if(p.X >= 0 && p.Y >= 0 && p.X < Var.Map.Grids.GetLength(0) && p.Y < Var.Map.Grids.GetLength(1))
+            Var.SelectedBlock = p;
+            pibMain.Invalidate();
         }
     }
 }

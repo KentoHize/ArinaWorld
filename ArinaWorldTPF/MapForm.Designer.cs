@@ -41,6 +41,7 @@
             pibMain.TabIndex = 0;
             pibMain.TabStop = false;
             pibMain.Paint += pibMain_Paint;
+            pibMain.MouseClick += pibMain_MouseClick;
             pibMain.MouseMove += pibMain_MouseMove;
             pibMain.MouseUp += pibMain_MouseUp;
             pibMain.MouseWheel += pibMain_MouseWheel;

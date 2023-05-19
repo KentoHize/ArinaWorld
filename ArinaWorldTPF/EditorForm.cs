@@ -32,10 +32,14 @@ namespace ArinaWorldTPF
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MapForm mp = new MapForm();
-            mp.MdiParent = this;
-            mp.WindowState = FormWindowState.Maximized;
-            mp.Show();
+            if (Var.MapForm != null)
+                return;
+            Var.MapForm = new MapForm();
+            Var.MapForm.MdiParent = this;
+            Var.MapForm.WindowState = FormWindowState.Maximized;
+            Var.SelectedBlock = new Point(0, 0);
+            Var.MapForm.Show();
+            
         }
 
         private void EditorForm_FormClosing(object sender, FormClosingEventArgs e)
