@@ -4,7 +4,23 @@
     "Value": "測試"
   },
   {
-    "Key": "EDF_TMI_ABOUT",
-    "Value": "關於"
+    "Key": "AWE_TMI_ABOUT_AWE",
+    "Value": "關於 Arina World Editor"
+  },
+  {
+    "Key": "AWE_TMI_HELP",
+    "Value": "說明"
+  },
+  {
+    "Key": "AWE_TMI_TOOL",
+    "Value": "工具"
+  },
+  {
+    "Key": "AWE_TMI_EN_US",
+    "Value": "English(en-US)"
+  },
+  {
+    "Key": "AWE_TMI_ZH_TW",
+    "Value": "繁體中文(zh-TW)"
   }
 ]

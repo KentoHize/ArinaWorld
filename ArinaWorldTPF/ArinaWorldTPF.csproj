@@ -27,7 +27,7 @@
     <Folder Include="GameData\" />
     <Folder Include="Data\" />
     <Folder Include="Language\" />
-    <Folder Include="Properties\" />
+    <Folder Include="Language All\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,5 +35,24 @@
       <HintPath>..\..\Aritiafel\Aritiafel\bin\Release\netstandard2.0\Aritiafel.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="if not exist &quot;$(ProjectDir)$(OutDir)Language&quot; mkdir &quot;$(ProjectDir)$(OutDir)Language&quot;&#xD;&#xA;copy &quot;$(ProjectDir)Language\&quot;  &quot;$(ProjectDir)$(OutDir)Language\&quot; /y" />
+  </Target>
 
 </Project>

@@ -4,7 +4,23 @@
     "Value": "test"
   },
   {
-    "Key": "EDF_TMI_ABOUT",
-    "Value": "About"
+    "Key": "AWE_TMI_ABOUT_AWE",
+    "Value": "About Arina World Editor"
+  },
+  {
+    "Key": "AWE_TMI_HELP",
+    "Value": "Help"
+  },
+  {
+    "Key": "AWE_TMI_TOOL",
+    "Value": "Tool"
+  },
+  {
+    "Key": "AWE_TMI_EN_US",
+    "Value": "English(en-US)"
+  },
+  {
+    "Key": "AWE_TMI_ZH_TW",
+    "Value": "繁體中文(zh-TW)"
   }
 ]

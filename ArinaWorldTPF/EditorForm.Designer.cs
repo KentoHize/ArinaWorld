@@ -47,6 +47,9 @@
             tsmProducePangea = new ToolStripMenuItem();
             tmiHelp = new ToolStripMenuItem();
             tmiAbout = new ToolStripMenuItem();
+            tmiTool = new ToolStripMenuItem();
+            tmiEN_US = new ToolStripMenuItem();
+            tmiZH_TW = new ToolStripMenuItem();
             statusStrip = new StatusStrip();
             toolStripStatusLabel = new ToolStripStatusLabel();
             toolTip = new ToolTip(components);
@@ -59,7 +62,7 @@
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, tsmTest, tmiHelp });
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, tsmTest, tmiHelp, tmiTool });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(9, 3, 0, 3);
@@ -172,15 +175,36 @@
             // 
             tmiHelp.DropDownItems.AddRange(new ToolStripItem[] { tmiAbout });
             tmiHelp.Name = "tmiHelp";
-            tmiHelp.Size = new Size(74, 24);
-            tmiHelp.Text = "說明(&H)";
+            tmiHelp.Size = new Size(132, 24);
+            tmiHelp.Text = "AWE_TMI_HELP";
             // 
             // tmiAbout
             // 
             tmiAbout.Name = "tmiAbout";
-            tmiAbout.Size = new Size(277, 26);
-            tmiAbout.Text = "關於 Arina World Editor(&A)";
+            tmiAbout.Size = new Size(222, 26);
+            tmiAbout.Text = "AWE_ABOUT_AWE";
             tmiAbout.Click += tmiAbout_Click;
+            // 
+            // tmiTool
+            // 
+            tmiTool.DropDownItems.AddRange(new ToolStripItem[] { tmiEN_US, tmiZH_TW });
+            tmiTool.Name = "tmiTool";
+            tmiTool.Size = new Size(136, 24);
+            tmiTool.Text = "AWE_TMI_TOOL";
+            // 
+            // tmiEN_US
+            // 
+            tmiEN_US.Name = "tmiEN_US";
+            tmiEN_US.Size = new Size(224, 26);
+            tmiEN_US.Text = "AWE_TMI_EN_US";
+            tmiEN_US.Click += tmiEN_US_Click;
+            // 
+            // tmiZH_TW
+            // 
+            tmiZH_TW.Name = "tmiZH_TW";
+            tmiZH_TW.Size = new Size(224, 26);
+            tmiZH_TW.Text = "AWE_TMI_ZH_TW";
+            tmiZH_TW.Click += tmiZH_TW_Click;
             // 
             // statusStrip
             // 
@@ -249,6 +273,9 @@
         private ToolStripMenuItem tsmProducePangea;
         private ToolStripMenuItem tmiHelp;
         private ToolStripMenuItem tmiAbout;
+        private ToolStripMenuItem tmiTool;
+        private ToolStripMenuItem tmiEN_US;
+        private ToolStripMenuItem tmiZH_TW;
     }
 }
 

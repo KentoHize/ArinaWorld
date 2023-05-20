@@ -11,7 +11,7 @@ using Aritiafel.Locations;
 using Aritiafel.Organizations.ArinaOrganization;
 using ArinaWorld;
 using Aritiafel.Organizations;
-
+using System.Security.Policy;
 
 namespace ArinaWorldTPF
 {
@@ -23,12 +23,26 @@ namespace ArinaWorldTPF
         {
             InitializeComponent();
         }
+
+        public void PatchLanguageText()
+        {
+            RabbitCouriers.RegisterLaguageFolderAndCI(Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Language"), Setting.CultureInfo);
+            tmiHelp.Text = RabbitCouriers.GetMessage("AWE_TMI_HELP");
+            tmiAbout.Text = RabbitCouriers.GetMessage("AWE_TMI_ABOUT_AWE");
+            tmiTool.Text = RabbitCouriers.GetMessage("AWE_TMI_TOOL");
+            tmiEN_US.Text = RabbitCouriers.GetMessage("AWE_TMI_EN_US");
+            tmiZH_TW.Text = RabbitCouriers.GetMessage("AWE_TMI_ZH_TW");
+        }
+
         private void EditorForm_Load(object sender, EventArgs e)
         {
             SettingShop.LoadIniFile(typeof(Setting));
 
             //Temp
             Geography.LoadRelatedData();
+
+            //讀取語言檔            
+            PatchLanguageText();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,7 +61,7 @@ namespace ArinaWorldTPF
         {
             SettingShop.SaveIniFile(typeof(Setting));
         }
-      
+
         private void tsmProducePangea_Click(object sender, EventArgs e)
         {
             Var.Map = new Map();
@@ -68,6 +82,18 @@ namespace ArinaWorldTPF
         private void tmiQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void tmiZH_TW_Click(object sender, EventArgs e)
+        {
+            Setting.CultureInfo = new System.Globalization.CultureInfo("zh-TW");
+            PatchLanguageText();
+        }
+
+        private void tmiEN_US_Click(object sender, EventArgs e)
+        {
+            Setting.CultureInfo = new System.Globalization.CultureInfo("en-US");
+            PatchLanguageText();
         }
     }
 }

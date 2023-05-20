@@ -5,8 +5,28 @@
     "zh-TW": "測試"
   },
   {
-    "Key": "EDF_TMI_ABOUT",
-    "en-US": "About",
-    "zh-TW": "關於"
+    "Key": "AWE_TMI_ABOUT_AWE",
+    "en-US": "About Arina World Editor",
+    "zh-TW": "關於 Arina World Editor"
+  },
+  {
+    "Key": "AWE_TMI_HELP",
+    "en-US": "Help",
+    "zh-TW": "說明"
+  },
+  {
+    "Key": "AWE_TMI_TOOL",
+    "en-US": "Tool",
+    "zh-TW": "工具"
+  },
+  {
+    "Key": "AWE_TMI_EN_US",
+    "en-US": "English(en-US)",
+    "zh-TW": "English(en-US)"
+  },
+  {
+    "Key": "AWE_TMI_ZH_TW",
+    "en-US": "繁體中文(zh-TW)",
+    "zh-TW": "繁體中文(zh-TW)"
   }
 ]
