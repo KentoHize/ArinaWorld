@@ -38,6 +38,7 @@ namespace ArinaWorldTPF
         {
             SettingShop.LoadIniFile(typeof(Setting));
 
+            Text = $"Arina World Editor - {Const.VersionString}";
             //Temp
             Geography.LoadRelatedData();
 
@@ -76,7 +77,8 @@ namespace ArinaWorldTPF
 
         private void tmiAbout_Click(object sender, EventArgs e)
         {
-
+            RabbitCouriers.SentInformation($"Arina World Editor, {Const.VersionString}\n\n" +
+                $"{Const.AuthorString}\n\n" + $"Email:{Const.AuthorEmail}");
         }
 
         private void tmiQuit_Click(object sender, EventArgs e)

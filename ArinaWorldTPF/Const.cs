@@ -11,5 +11,12 @@ namespace ArinaWorldTPF
         public const string GameDataPath = @"C:\Programs\ArinaWorld\ArinaWorldTPF\GameData\";
 
         public const string DataPath = @"C:\Programs\ArinaWorld\ArinaWorldTPF\Data\";
+
+        public const string VersionString = "Version 0.02";
+
+        public const string AuthorString = "日瀬健人(Kento Hize)";
+
+        public const string AuthorEmail = "KentoHize@gmail.com";
+        
     }
 }
