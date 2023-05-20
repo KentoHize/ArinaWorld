@@ -16,19 +16,7 @@ namespace ArinaWorldTPF
     {
         public static Dictionary<string, int>? Terrains { get; set; }
         public static Dictionary<string, int>? SurfaceFeatures { get; set; }
-        public static Dictionary<string, int>? NatureImprovements { get; set; }
-
-        //public static void ProduceContinentGeography(Map map)
-        //{
-        //    if(map == null)
-        //        throw new ArgumentNullException(nameof(map));
-        //    for(long i = 0; i < map.Height; i++)
-        //    {
-        //        for (long j = 0; j < map.Width; j++)
-        //        {
-        //        }
-        //    }
-        //}
+        public static Dictionary<string, int>? NatureImprovements { get; set; }      
 
         public static void LoadRelatedData()
         {

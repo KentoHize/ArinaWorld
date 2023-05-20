@@ -37,11 +37,7 @@ namespace ArinaWorldTest
                     Console.WriteLine();
                 }
             }
-           
-            //for (int i = 0; i < 100; i++)
-            //{
-
-            //}
+         
         }
         
         Point TraslateTransform(Point p, int transformX, int transformY)
@@ -74,9 +70,8 @@ namespace ArinaWorldTest
 
         Point AmplificationTransformInverse(Point p, int amplificationFactor)
         {
-            return new Point((int)Math.Round((double)p.X / amplificationFactor), (int)Math.Round((double)p.Y / amplificationFactor));
+            return new Point(p.X / amplificationFactor, p.Y / amplificationFactor);
         }
-
 
     }
 }

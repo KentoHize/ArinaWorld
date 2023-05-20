@@ -42,9 +42,11 @@
             printPreviewToolStripMenuItem = new ToolStripMenuItem();
             printSetupToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator5 = new ToolStripSeparator();
-            tsmQuit = new ToolStripMenuItem();
+            tmiQuit = new ToolStripMenuItem();
             tsmTest = new ToolStripMenuItem();
             tsmProducePangea = new ToolStripMenuItem();
+            tmiHelp = new ToolStripMenuItem();
+            tmiAbout = new ToolStripMenuItem();
             statusStrip = new StatusStrip();
             toolStripStatusLabel = new ToolStripStatusLabel();
             toolTip = new ToolTip(components);
@@ -57,20 +59,20 @@
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, tsmTest });
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileMenu, tsmTest, tmiHelp });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(9, 3, 0, 3);
-            menuStrip.Size = new Size(1902, 29);
+            menuStrip.Size = new Size(1902, 30);
             menuStrip.TabIndex = 0;
             menuStrip.Text = "MenuStrip";
             // 
             // fileMenu
             // 
-            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator3, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator4, printToolStripMenuItem, printPreviewToolStripMenuItem, printSetupToolStripMenuItem, toolStripSeparator5, tsmQuit });
+            fileMenu.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator3, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator4, printToolStripMenuItem, printPreviewToolStripMenuItem, printSetupToolStripMenuItem, toolStripSeparator5, tmiQuit });
             fileMenu.ImageTransparentColor = SystemColors.ActiveBorder;
             fileMenu.Name = "fileMenu";
-            fileMenu.Size = new Size(71, 23);
+            fileMenu.Size = new Size(71, 24);
             fileMenu.Text = "檔案(&F)";
             // 
             // newToolStripMenuItem
@@ -145,18 +147,18 @@
             toolStripSeparator5.Name = "toolStripSeparator5";
             toolStripSeparator5.Size = new Size(228, 6);
             // 
-            // tsmQuit
+            // tmiQuit
             // 
-            tsmQuit.Name = "tsmQuit";
-            tsmQuit.Size = new Size(231, 26);
-            tsmQuit.Text = "結束(&X)";
-            tsmQuit.Click += tsmQuit_Click;
+            tmiQuit.Name = "tmiQuit";
+            tmiQuit.Size = new Size(231, 26);
+            tmiQuit.Text = "結束(&X)";
+            tmiQuit.Click += tmiQuit_Click;
             // 
             // tsmTest
             // 
             tsmTest.DropDownItems.AddRange(new ToolStripItem[] { tsmProducePangea });
             tsmTest.Name = "tsmTest";
-            tsmTest.Size = new Size(71, 23);
+            tsmTest.Size = new Size(71, 24);
             tsmTest.Text = "測試(&T)";
             // 
             // tsmProducePangea
@@ -165,6 +167,20 @@
             tsmProducePangea.Size = new Size(182, 26);
             tsmProducePangea.Text = "產生單一大陸";
             tsmProducePangea.Click += tsmProducePangea_Click;
+            // 
+            // tmiHelp
+            // 
+            tmiHelp.DropDownItems.AddRange(new ToolStripItem[] { tmiAbout });
+            tmiHelp.Name = "tmiHelp";
+            tmiHelp.Size = new Size(74, 24);
+            tmiHelp.Text = "說明(&H)";
+            // 
+            // tmiAbout
+            // 
+            tmiAbout.Name = "tmiAbout";
+            tmiAbout.Size = new Size(277, 26);
+            tmiAbout.Text = "關於 Arina World Editor(&A)";
+            tmiAbout.Click += tmiAbout_Click;
             // 
             // statusStrip
             // 
@@ -225,12 +241,14 @@
         private ToolStripMenuItem saveAsToolStripMenuItem;
         private ToolStripMenuItem printToolStripMenuItem;
         private ToolStripMenuItem printPreviewToolStripMenuItem;
-        private ToolStripMenuItem tsmQuit;
+        private ToolStripMenuItem tmiQuit;
         private ToolTip toolTip;
         private SaveFileDialog saveFileDialog;
         private OpenFileDialog openFileDialog;
         private ToolStripMenuItem tsmTest;
         private ToolStripMenuItem tsmProducePangea;
+        private ToolStripMenuItem tmiHelp;
+        private ToolStripMenuItem tmiAbout;
     }
 }
 

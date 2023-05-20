@@ -1,7 +1,5 @@
 using ArinaWorld;
 using System.Text.Json;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
 
 namespace ArinaWorldTPF
 {
@@ -10,11 +8,6 @@ namespace ArinaWorldTPF
         public MainForm()
         {
             InitializeComponent();
-        }       
-
-        private void puc1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void tsmLoadData_Click(object sender, EventArgs e)

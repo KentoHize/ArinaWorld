@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Aritiafel.Locations;
 using Aritiafel.Organizations.ArinaOrganization;
 using ArinaWorld;
+using Aritiafel.Organizations;
 
 
 namespace ArinaWorldTPF
@@ -39,19 +40,14 @@ namespace ArinaWorldTPF
             Var.MapForm.WindowState = FormWindowState.Maximized;
             Var.SelectedBlock = new Point(0, 0);
             Var.MapForm.Show();
-            
+
         }
 
         private void EditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SettingShop.SaveIniFile(typeof(Setting));
         }
-
-        private void tsmQuit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+      
         private void tsmProducePangea_Click(object sender, EventArgs e)
         {
             Var.Map = new Map();
@@ -62,6 +58,16 @@ namespace ArinaWorldTPF
                 CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 1000);
             if (ActiveMdiChild != null)
                 ActiveMdiChild.Invalidate();
+        }
+
+        private void tmiAbout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmiQuit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

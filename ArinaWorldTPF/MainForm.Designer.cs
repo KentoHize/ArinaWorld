@@ -45,7 +45,6 @@
             puc1.Province = null;
             puc1.Size = new Size(112, 131);
             puc1.TabIndex = 0;
-            puc1.Load += puc1_Load;
             // 
             // menuStrip1
             // 

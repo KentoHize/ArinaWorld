@@ -26,6 +26,7 @@
   <ItemGroup>
     <Folder Include="GameData\" />
     <Folder Include="Data\" />
+    <Folder Include="Language\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 
