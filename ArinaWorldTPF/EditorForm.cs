@@ -79,9 +79,7 @@ namespace ArinaWorldTPF
 
         private void tmiProducePangea_Click(object sender, EventArgs e)
         {
-            Var.Map = new Map();
-            Var.Map.Height = 200;
-            Var.Map.Width = 200;
+            Var.Map = new Map("aa", 200, 200);
             Setting.AmplificationFactor = 50;
             Geography.ProducePangeaGeography(Var.Map, 100, 100, 1,
                 CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 1000);
@@ -93,14 +91,19 @@ namespace ArinaWorldTPF
         {
             NewMapForm NewMapForm = new NewMapForm();
             NewMapForm.ShowDialogOrCallEvent(this);
-            MessageBox.Show("a");
-            //if (Var.MapForm != null)
-            //    return;
-            //Var.MapForm = new MapForm();
-            //Var.MapForm.MdiParent = this;
-            //Var.MapForm.WindowState = FormWindowState.Maximized;
-            //Var.SelectedBlock = new Point(0, 0);
-            //Var.MapForm.Show();
+            Var.Map = new Map(NewMapForm.MapName, NewMapForm.Width, NewMapForm.Height);
+            Setting.AmplificationFactor = 50;
+            if (Var.MapForm != null)
+            {   
+                Var.MapForm.Invalidate();
+                return;
+            }
+                
+            Var.MapForm = new MapForm();
+            Var.MapForm.MdiParent = this;
+            Var.MapForm.WindowState = FormWindowState.Maximized;
+            Var.SelectedBlock = new Point(0, 0);            
+            Var.MapForm.Show();
         }
     }
 }

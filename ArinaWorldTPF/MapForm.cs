@@ -24,7 +24,7 @@ namespace ArinaWorldTPF
         {
             InitializeComponent();
             //SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
-            UpdateStyles();
+            //UpdateStyles();
         }
 
         Point TraslateTransform(Point p, int transformX, int transformY)
@@ -207,22 +207,22 @@ namespace ArinaWorldTPF
         private void MapForm_Load(object sender, EventArgs e)
         {
             //Temp
-            if (Var.Map == null)
-            {
-                Var.Map = new Map();
-                Var.Map.Name = "TestMap";
-                Var.Map.Grids = new Grid[10, 10];
-                Setting.AmplificationFactor = 50;
-                Setting.TransformX = 10;
-                Setting.TransformY = 10;
-                for (int i = 0; i < 10; i++)
-                {
-                    for (int j = 0; j < 10; j++)
-                    {
-                        Var.Map.Grids[i, j] = new Grid();
-                    }
-                }
-            }
+            //if (Var.Map == null)
+            //{
+            //    Var.Map = new Map();
+            //    Var.Map.Name = "TestMap";
+            //    Var.Map.Grids = new Grid[10, 10];
+            //    Setting.AmplificationFactor = 50;
+            //    Setting.TransformX = 10;
+            //    Setting.TransformY = 10;
+            //    for (int i = 0; i < 10; i++)
+            //    {
+            //        for (int j = 0; j < 10; j++)
+            //        {
+            //            Var.Map.Grids[i, j] = new Grid();
+            //        }
+            //    }
+            //}
         }
 
 
@@ -319,6 +319,11 @@ namespace ArinaWorldTPF
             if(p.X >= 0 && p.Y >= 0 && p.X < Var.Map.Grids.GetLength(0) && p.Y < Var.Map.Grids.GetLength(1))
             Var.SelectedBlock = p;
             pibMain.Invalidate();
+        }
+        protected override void OnInvalidated(InvalidateEventArgs e)
+        {
+            //pibMain.Invalidate();
+            base.OnInvalidated(e);
         }
     }
 }
