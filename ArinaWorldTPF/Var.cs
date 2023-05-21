@@ -16,6 +16,8 @@ namespace ArinaWorldTPF
         public static Point SelectedBlock { get; set; }
         public static int TransformX { get; set; } = 0;
         public static int TransformY { get; set; } = 0;
+        public static int RotateAngleY { get; set; } = 0;
+        public static int RotateAngleZ { get; set; } = 0;
 
         public static string CustomDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Arina World");
     }

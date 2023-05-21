@@ -146,9 +146,9 @@ namespace ArinaWorldTPF
             ChaosBox cb = new ChaosBox();
             for(int i = 0; i < 10; i++)
             {
-                int h = cb.DrawOutInteger(1, (int)map.Height - 1);
                 int w = cb.DrawOutInteger(1, (int)map.Width - 1);
-                GridExpand(map, new Grid[] { map.Grids[h, w] }, peakAltitude);
+                int h = cb.DrawOutInteger(1, (int)map.Height - 1);                
+                GridExpand(map, new Grid[] { map.Grids[w, h] }, peakAltitude);
             }
             
             //peakAltitude 

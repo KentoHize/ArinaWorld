@@ -79,9 +79,9 @@ namespace ArinaWorldTPF
 
         private void tmiProducePangea_Click(object sender, EventArgs e)
         {
-            Var.Map = new Map("aa", 200, 200);
+            //Var.Map = new Map("aa", 200, 200);
             Setting.AmplificationFactor = 50;
-            Geography.ProducePangeaGeography(Var.Map, 100, 100, 1,
+            Geography.ProducePangeaGeography(Var.Map, Var.Map.Height, Var.Map.Width, 1,
                 CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 1000);
             if (ActiveMdiChild != null)
                 ActiveMdiChild.Invalidate();
@@ -93,10 +93,17 @@ namespace ArinaWorldTPF
             DialogResult dr = NewMapForm.ShowDialogOrCallEvent(this);
             if (dr == DialogResult.Cancel)
                 return;
+
             Var.Map = new Map(NewMapForm.MapName, NewMapForm.Width, NewMapForm.Height);
             Setting.AmplificationFactor = 50;
+            //Var.TransformX = NewMapForm.Width / 2;
+            //Var.TransformY = NewMapForm.Height / 2;
             Var.TransformX = 0;
             Var.TransformY = 0;
+            Var.RotateAngleY = 180;
+            Var.RotateAngleZ = 150;
+            Var.SelectedBlock = new Point(NewMapForm.Width / 2 - 1, NewMapForm.Height / 2 - 1);
+            
             if (Var.MapForm != null)
             {   
                 Var.MapForm.Invalidate();
@@ -105,8 +112,7 @@ namespace ArinaWorldTPF
                 
             Var.MapForm = new MapForm();
             Var.MapForm.MdiParent = this;
-            Var.MapForm.WindowState = FormWindowState.Maximized;
-            Var.SelectedBlock = new Point(0, 0);            
+            Var.MapForm.WindowState = FormWindowState.Maximized;                       
             Var.MapForm.Show();
         }
     }

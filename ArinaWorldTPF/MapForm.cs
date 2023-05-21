@@ -69,9 +69,9 @@ namespace ArinaWorldTPF
             if (Var.Map == null || Var.Map.Grids == null)
                 return;
 
-            double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
-            double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
-            double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
+            double multipierY = Math.Cos((double)Var.RotateAngleY / 180);
+            double multipierZ1 = Math.Cos((double)Var.RotateAngleZ / 180);
+            double multipierZ2 = Math.Sin((double)Var.RotateAngleZ / 180);
             int transformX = Var.TransformX;
             int transformY = Var.TransformY;
             
@@ -83,6 +83,7 @@ namespace ArinaWorldTPF
                 vertex[i] = TraslateTransformInverse(vertex[i], transformX, transformY);
                 vertex[i] = RotateTransformInverse(vertex[i], multipierY, multipierZ1, multipierZ2);
                 vertex[i] = AmplificationTransformInverse(vertex[i], Setting.AmplificationFactor);
+                
             }
 
             int minX = Var.Map.Grids.GetLength(0), minY = Var.Map.Grids.GetLength(1), maxX = 0, maxY = 0;
@@ -120,10 +121,11 @@ namespace ArinaWorldTPF
                     //x = xcosT - ysinT
                     //y = ycosT + xsinT
                     for (int k = 0; k < 4; k++)
-                    {
+                    {   
                         points[k] = AmplificationTransform(points[k], Setting.AmplificationFactor);
                         points[k] = RotateTransform(points[k], multipierY, multipierZ1, multipierZ2);
                         points[k] = TraslateTransform(points[k], transformX, transformY);
+
                     }
 
                     Brush brush;
@@ -156,10 +158,11 @@ namespace ArinaWorldTPF
             points[2] = new Point(Var.SelectedBlock.X + 1, Var.SelectedBlock.Y + 1);
             points[3] = new Point(Var.SelectedBlock.X, Var.SelectedBlock.Y + 1);
             for (int k = 0; k < 4; k++)
-            {
+            {   
                 points[k] = AmplificationTransform(points[k], Setting.AmplificationFactor);
                 points[k] = RotateTransform(points[k], multipierY, multipierZ1, multipierZ2);
                 points[k] = TraslateTransform(points[k], transformX, transformY);
+
             }
             g.DrawPolygon(new Pen(Color.White, 2), points);
             g.Flush();
@@ -172,35 +175,35 @@ namespace ArinaWorldTPF
 
         public void RotateLeft(int amount = 10)
         {
-            Setting.RotateAngleZ -= Math.Abs(amount);
+            Var.RotateAngleZ -= Math.Abs(amount);
             Redraw();
         }
 
         public void RotateRight(int amount = 10)
         {
-            Setting.RotateAngleZ += Math.Abs(amount);
+            Var.RotateAngleZ += Math.Abs(amount);
             Redraw();
         }
 
         public void RotateUp(int amount = 10)
         {
-            if (Setting.RotateAngleY > -180)
-                Setting.RotateAngleY -= Math.Abs(amount);
+            if (Var.RotateAngleY > -180)
+                Var.RotateAngleY -= Math.Abs(amount);
             else
                 return;
-            if (Setting.RotateAngleY < -180)
-                Setting.RotateAngleY = -180;
+            if (Var.RotateAngleY < -180)
+                Var.RotateAngleY = -180;
             Redraw();
         }
 
         public void RotateDown(int amount = 10)
         {
-            if (Setting.RotateAngleY < 0)
-                Setting.RotateAngleY += Math.Abs(amount);
+            if (Var.RotateAngleY < 0)
+                Var.RotateAngleY += Math.Abs(amount);
             else
                 return;
-            if (Setting.RotateAngleY > 0)
-                Setting.RotateAngleY = 0;
+            if (Var.RotateAngleY > 0)
+                Var.RotateAngleY = 0;
             Redraw();
         }
 
@@ -286,19 +289,20 @@ namespace ArinaWorldTPF
             if (Var.Map == null)
                 return;
             //計算位置
-            double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
-            double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
-            double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
+            double multipierY = Math.Cos((double)Var.RotateAngleY / 180);
+            double multipierZ1 = Math.Cos((double)Var.RotateAngleZ / 180);
+            double multipierZ2 = Math.Sin((double)Var.RotateAngleZ / 180);
             int transformX = Var.TransformX;
             int transformY = Var.TransformY;
 
             
             Point p = new Point(e.X, e.Y);
+
             p = TraslateTransformInverse(p, transformX, transformY);
             p = RotateTransformInverse(p, multipierY, multipierZ1, multipierZ2);
             p = AmplificationTransformInverse(p, Setting.AmplificationFactor);
 
-            if(p.X >= 0 && p.Y >= 0 && p.X < Var.Map.Grids.GetLength(0) && p.Y < Var.Map.Grids.GetLength(1))
+            if (p.X >= 0 && p.Y >= 0 && p.X < Var.Map.Grids.GetLength(0) && p.Y < Var.Map.Grids.GetLength(1))
             Var.SelectedBlock = p;
             pibMain.Invalidate();
         }
