@@ -54,5 +54,33 @@
   {
     "Key": "AWE_LBL_HEIGHT",
     "Value": "高度"
+  },
+  {
+    "Key": "AWE_VAL_MAP_WIDTH_LESS_THEN_MINIMUM",
+    "Value": "地圖寬度低於最小值{0}"
+  },
+  {
+    "Key": "AWE_VAL_MAP_WIDTH_GREATER_THEN_MAXIMUM",
+    "Value": "地圖寬度超過最大值{0}"
+  },
+  {
+    "Key": "AWE_VAL_MAP_HEIGHT_LESS_THEN_MINIMUM",
+    "Value": "地圖高度低於最小值{0}"
+  },
+  {
+    "Key": "AWE_VAL_MAP_HEIGHT_GREATER_THEN_MAXIMUM",
+    "Value": "地圖高度超過最大值{0}"
+  },
+  {
+    "Key": "AWE_VAL_NOT_AN_INTEGER",
+    "Value": "必須是一個整數"
+  },
+  {
+    "Key": "AWE_VAL_IS_EMPTY",
+    "Value": "不能為空值"
+  },
+  {
+    "Key": "AWE_TXT_DEFAULT_MAP_NAME",
+    "Value": "新地圖"
   }
 ]

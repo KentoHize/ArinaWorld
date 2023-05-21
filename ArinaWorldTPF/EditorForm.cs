@@ -91,15 +91,16 @@ namespace ArinaWorldTPF
 
         private void tmiNewMap_Click(object sender, EventArgs e)
         {
-            //new NewMapForm();
-
-            if (Var.MapForm != null)
-                return;
-            Var.MapForm = new MapForm();
-            Var.MapForm.MdiParent = this;
-            Var.MapForm.WindowState = FormWindowState.Maximized;
-            Var.SelectedBlock = new Point(0, 0);
-            Var.MapForm.Show();
+            NewMapForm NewMapForm = new NewMapForm();
+            NewMapForm.ShowDialogOrCallEvent(this);
+            MessageBox.Show("a");
+            //if (Var.MapForm != null)
+            //    return;
+            //Var.MapForm = new MapForm();
+            //Var.MapForm.MdiParent = this;
+            //Var.MapForm.WindowState = FormWindowState.Maximized;
+            //Var.SelectedBlock = new Point(0, 0);
+            //Var.MapForm.Show();
         }
     }
 }

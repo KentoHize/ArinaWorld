@@ -68,5 +68,40 @@
     "Key": "AWE_LBL_HEIGHT",
     "en-US": "Height",
     "zh-TW": "高度"
+  },
+  {
+    "Key": "AWE_VAL_MAP_WIDTH_LESS_THEN_MINIMUM",
+    "en-US": "Map's width must greater then {0}.",
+    "zh-TW": "地圖寬度低於最小值{0}"
+  },
+  {
+    "Key": "AWE_VAL_MAP_WIDTH_GREATER_THEN_MAXIMUM",
+    "en-US": "Map's width must less then {0}.",
+    "zh-TW": "地圖寬度超過最大值{0}"
+  },
+  {
+    "Key": "AWE_VAL_MAP_HEIGHT_LESS_THEN_MINIMUM",
+    "en-US": "Map's height must greater then {0}.",
+    "zh-TW": "地圖高度低於最小值{0}"
+  },
+  {
+    "Key": "AWE_VAL_MAP_HEIGHT_GREATER_THEN_MAXIMUM",
+    "en-US": "Map's height must less then {0}.",
+    "zh-TW": "地圖高度超過最大值{0}"
+  },
+  {
+    "Key": "AWE_VAL_NOT_AN_INTEGER",
+    "en-US": "Must be an integer.",
+    "zh-TW": "必須是一個整數"
+  },
+  {
+    "Key": "AWE_VAL_IS_EMPTY",
+    "en-US": "Can't be empty.",
+    "zh-TW": "不能為空值"
+  },
+  {
+    "Key": "AWE_TXT_DEFAULT_MAP_NAME",
+    "en-US": "New Map",
+    "zh-TW": "新地圖"
   }
 ]

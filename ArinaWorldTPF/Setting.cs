@@ -15,5 +15,9 @@ namespace ArinaWorldTPF
         public static int TransformY { get; set; } = 0;
         public static int AmplificationFactor { get; set; } = 50;
         public static CultureInfo CultureInfo { get; set; } = new CultureInfo("en-US");
+
+        public static int DefaultMapWidth { get; set; } = 300;
+        public static int DefaultMapHeight { get; set; } = 300;
+        //public static string DefaultMapName { get; set; } = "新地圖";
     }
 }
