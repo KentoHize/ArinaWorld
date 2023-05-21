@@ -21,7 +21,7 @@ namespace ArinaWorldTPF
         public NewMapForm()
         {
             InitializeComponent();
-            PatchLanguageText();            
+            PatchLanguageText();
             txtWidth.Text = Setting.DefaultMapWidth.ToString();
             txtHeight.Text = Setting.DefaultMapHeight.ToString();
             txtWidth_TextChanged(txtWidth, EventArgs.Empty);
@@ -39,7 +39,7 @@ namespace ArinaWorldTPF
             lblMapName.Text = RabbitCouriers.GetMessage("AWE_LBL_MAP_NAME");
             btnOK.Text = RabbitCouriers.GetMessage("AWE_BTN_OK");
             btnCancel.Text = RabbitCouriers.GetMessage("AWE_BTN_CANCEL");
-            txtMapName.Text = RabbitCouriers.GetMessage("AWE_TXT_DEFAULT_MAP_NAME");            
+            txtMapName.Text = RabbitCouriers.GetMessage("AWE_TXT_DEFAULT_MAP_NAME");
         }
 
         private void RefreshControlState()

@@ -90,9 +90,13 @@ namespace ArinaWorldTPF
         private void tmiNewMap_Click(object sender, EventArgs e)
         {
             NewMapForm NewMapForm = new NewMapForm();
-            NewMapForm.ShowDialogOrCallEvent(this);
+            DialogResult dr = NewMapForm.ShowDialogOrCallEvent(this);
+            if (dr == DialogResult.Cancel)
+                return;
             Var.Map = new Map(NewMapForm.MapName, NewMapForm.Width, NewMapForm.Height);
             Setting.AmplificationFactor = 50;
+            Var.TransformX = 0;
+            Var.TransformY = 0;
             if (Var.MapForm != null)
             {   
                 Var.MapForm.Invalidate();

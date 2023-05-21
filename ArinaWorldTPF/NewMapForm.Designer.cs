@@ -146,6 +146,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "NewMapForm";
+            StartPosition = FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)errWidth).EndInit();
             ((System.ComponentModel.ISupportInitialize)errHeight).EndInit();
             ((System.ComponentModel.ISupportInitialize)errMapName).EndInit();

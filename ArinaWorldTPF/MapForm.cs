@@ -72,8 +72,8 @@ namespace ArinaWorldTPF
             double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
             double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
             double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
-            int transformX = Setting.TransformX;
-            int transformY = Setting.TransformY;
+            int transformX = Var.TransformX;
+            int transformY = Var.TransformY;
             
             //計算框內的格子邊界
             Point[] vertex = { new Point(0, 0), new Point(pibMain.Width + 1, 0), new Point(0, pibMain.Height + 1), new Point(pibMain.Width + 1, pibMain.Height + 1)};
@@ -206,26 +206,8 @@ namespace ArinaWorldTPF
 
         private void MapForm_Load(object sender, EventArgs e)
         {
-            //Temp
-            //if (Var.Map == null)
-            //{
-            //    Var.Map = new Map();
-            //    Var.Map.Name = "TestMap";
-            //    Var.Map.Grids = new Grid[10, 10];
-            //    Setting.AmplificationFactor = 50;
-            //    Setting.TransformX = 10;
-            //    Setting.TransformY = 10;
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        for (int j = 0; j < 10; j++)
-            //        {
-            //            Var.Map.Grids[i, j] = new Grid();
-            //        }
-            //    }
-            //}
+           
         }
-
-
         private void MapForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             switch (e.KeyChar)
@@ -274,8 +256,8 @@ namespace ArinaWorldTPF
             {
                 if (mousePosition != Point.Empty)
                 {
-                    Setting.TransformX += e.X - mousePosition.X;
-                    Setting.TransformY += e.Y - mousePosition.Y;
+                    Var.TransformX += e.X - mousePosition.X;
+                    Var.TransformY += e.Y - mousePosition.Y;
                     Redraw();
                 }
                 mousePosition = e.Location;
@@ -307,8 +289,8 @@ namespace ArinaWorldTPF
             double multipierY = Math.Cos((double)Setting.RotateAngleY / 180);
             double multipierZ1 = Math.Cos((double)Setting.RotateAngleZ / 180);
             double multipierZ2 = Math.Sin((double)Setting.RotateAngleZ / 180);
-            int transformX = Setting.TransformX;
-            int transformY = Setting.TransformY;
+            int transformX = Var.TransformX;
+            int transformY = Var.TransformY;
 
             
             Point p = new Point(e.X, e.Y);
@@ -322,7 +304,7 @@ namespace ArinaWorldTPF
         }
         protected override void OnInvalidated(InvalidateEventArgs e)
         {
-            //pibMain.Invalidate();
+            pibMain.Invalidate();
             base.OnInvalidated(e);
         }
     }

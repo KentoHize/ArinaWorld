@@ -14,6 +14,8 @@ namespace ArinaWorldTPF
         public static Map? Map { get; set; }
         public static MapForm? MapForm { get; set; }
         public static Point SelectedBlock { get; set; }
+        public static int TransformX { get; set; } = 0;
+        public static int TransformY { get; set; } = 0;
 
         public static string CustomDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Arina World");
     }
