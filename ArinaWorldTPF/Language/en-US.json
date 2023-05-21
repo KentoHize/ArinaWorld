@@ -1,9 +1,5 @@
 [
   {
-    "Key": "RES_TEST",
-    "Value": "test"
-  },
-  {
     "Key": "AWE_TMI_ABOUT_AWE",
     "Value": "About Arina World Editor"
   },
@@ -22,5 +18,41 @@
   {
     "Key": "AWE_TMI_ZH_TW",
     "Value": "繁體中文(zh-TW)"
+  },
+  {
+    "Key": "AWE_TMI_QUIT",
+    "Value": "Exit"
+  },
+  {
+    "Key": "AWE_TMI_FILE",
+    "Value": "File"
+  },
+  {
+    "Key": "AWE_TMI_TEST",
+    "Value": "Test"
+  },
+  {
+    "Key": "AWE_TMI_NEW_MAP",
+    "Value": "New Map"
+  },
+  {
+    "Key": "AWE_BTN_OK",
+    "Value": "OK"
+  },
+  {
+    "Key": "AWE_BTN_CANCEL",
+    "Value": "Cancel"
+  },
+  {
+    "Key": "AWE_LBL_MAP_NAME",
+    "Value": "Map Name"
+  },
+  {
+    "Key": "AWE_LBL_WIDTH",
+    "Value": "Width"
+  },
+  {
+    "Key": "AWE_LBL_HEIGHT",
+    "Value": "Height"
   }
 ]

@@ -1,10 +1,5 @@
 [
   {
-    "Key": "RES_TEST",
-    "en-US": "test",
-    "zh-TW": "測試"
-  },
-  {
     "Key": "AWE_TMI_ABOUT_AWE",
     "en-US": "About Arina World Editor",
     "zh-TW": "關於 Arina World Editor"
@@ -28,5 +23,50 @@
     "Key": "AWE_TMI_ZH_TW",
     "en-US": "繁體中文(zh-TW)",
     "zh-TW": "繁體中文(zh-TW)"
+  },
+  {
+    "Key": "AWE_TMI_QUIT",
+    "en-US": "Exit",
+    "zh-TW": "結束"
+  },
+  {
+    "Key": "AWE_TMI_FILE",
+    "en-US": "File",
+    "zh-TW": "檔案"
+  },
+  {
+    "Key": "AWE_TMI_TEST",
+    "en-US": "Test",
+    "zh-TW": "測試"
+  },
+  {
+    "Key": "AWE_TMI_NEW_MAP",
+    "en-US": "New Map",
+    "zh-TW": "新地圖"
+  },
+  {
+    "Key": "AWE_BTN_OK",
+    "en-US": "OK",
+    "zh-TW": "確定"
+  },
+  {
+    "Key": "AWE_BTN_CANCEL",
+    "en-US": "Cancel",
+    "zh-TW": "取消"
+  },
+  {
+    "Key": "AWE_LBL_MAP_NAME",
+    "en-US": "Map Name",
+    "zh-TW": "地圖名稱"
+  },
+  {
+    "Key": "AWE_LBL_WIDTH",
+    "en-US": "Width",
+    "zh-TW": "寬度"
+  },
+  {
+    "Key": "AWE_LBL_HEIGHT",
+    "en-US": "Height",
+    "zh-TW": "高度"
   }
 ]

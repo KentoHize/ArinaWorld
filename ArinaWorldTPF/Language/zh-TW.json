@@ -1,9 +1,5 @@
 [
   {
-    "Key": "RES_TEST",
-    "Value": "測試"
-  },
-  {
     "Key": "AWE_TMI_ABOUT_AWE",
     "Value": "關於 Arina World Editor"
   },
@@ -22,5 +18,41 @@
   {
     "Key": "AWE_TMI_ZH_TW",
     "Value": "繁體中文(zh-TW)"
+  },
+  {
+    "Key": "AWE_TMI_QUIT",
+    "Value": "結束"
+  },
+  {
+    "Key": "AWE_TMI_FILE",
+    "Value": "檔案"
+  },
+  {
+    "Key": "AWE_TMI_TEST",
+    "Value": "測試"
+  },
+  {
+    "Key": "AWE_TMI_NEW_MAP",
+    "Value": "新地圖"
+  },
+  {
+    "Key": "AWE_BTN_OK",
+    "Value": "確定"
+  },
+  {
+    "Key": "AWE_BTN_CANCEL",
+    "Value": "取消"
+  },
+  {
+    "Key": "AWE_LBL_MAP_NAME",
+    "Value": "地圖名稱"
+  },
+  {
+    "Key": "AWE_LBL_WIDTH",
+    "Value": "寬度"
+  },
+  {
+    "Key": "AWE_LBL_HEIGHT",
+    "Value": "高度"
   }
 ]
