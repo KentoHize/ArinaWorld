@@ -6,7 +6,7 @@ namespace ArinaWorld
     {
         public long X { get; set; }
         public long Y { get; set; }
-        public Province Owner { get; set; }
+        public Province? Owner { get; set; }
         public long Altitude { get; set; }
         public int Terrain { get; set; }
         public int SurfaceFeature { get; set; }

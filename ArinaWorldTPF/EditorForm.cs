@@ -94,26 +94,24 @@ namespace ArinaWorldTPF
             if (dr == DialogResult.Cancel)
                 return;
 
-            Var.Map = new Map(NewMapForm.MapName, NewMapForm.Width, NewMapForm.Height);
+            Var.Map = new Map(NewMapForm.MapName, NewMapForm.MapWidth, NewMapForm.MapHeight);
             Setting.AmplificationFactor = 50;
-            //Var.TransformX = NewMapForm.Width / 2;
-            //Var.TransformY = NewMapForm.Height / 2;
-            Var.TransformX = 0;
-            Var.TransformY = 0;
             Var.RotateAngleY = 180;
-            Var.RotateAngleZ = 150;
-            Var.SelectedBlock = new Point(NewMapForm.Width / 2 - 1, NewMapForm.Height / 2 - 1);
+            Var.RotateAngleZ = 150;            
+            Var.SelectedBlock = new Point(NewMapForm.MapWidth / 2 - 1, NewMapForm.MapHeight / 2 - 1);
             
             if (Var.MapForm != null)
-            {   
-                Var.MapForm.Invalidate();
+            {
+                Var.MapForm.CenterCamera();
+                Var.MapForm.Text = NewMapForm.MapName;
                 return;
-            }
-                
+            }                
             Var.MapForm = new MapForm();
-            Var.MapForm.MdiParent = this;
-            Var.MapForm.WindowState = FormWindowState.Maximized;                       
+            Var.MapForm.Text = NewMapForm.MapName;
+            Var.MapForm.MdiParent = this;            
+            Var.MapForm.WindowState = FormWindowState.Maximized;            
             Var.MapForm.Show();
+            Var.MapForm.CenterCamera();
         }
     }
 }

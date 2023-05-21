@@ -15,8 +15,8 @@ namespace ArinaWorldTPF
     public partial class NewMapForm : Form
     {
         public string MapName { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public int MapHeight { get; set; }
+        public int MapWidth { get; set; }
 
         public NewMapForm()
         {
@@ -52,10 +52,10 @@ namespace ArinaWorldTPF
             if (errWidth.HasErrors)
                 return;
             MapName = txtMapName.Text;
-            Height = int.Parse(txtHeight.Text);
-            Width = int.Parse(txtWidth.Text);
-            Setting.DefaultMapHeight = Height;
-            Setting.DefaultMapWidth = Width;
+            MapHeight = int.Parse(txtHeight.Text);
+            MapWidth = int.Parse(txtWidth.Text);
+            Setting.DefaultMapHeight = MapHeight;
+            Setting.DefaultMapWidth = MapWidth;
             DialogResult = DialogResult.OK;
         }
 

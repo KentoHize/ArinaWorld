@@ -13,6 +13,7 @@ using System.Net.NetworkInformation;
 using GameData;
 using System.Diagnostics;
 using System.Reflection;
+using System.Security.Cryptography.Xml;
 
 namespace ArinaWorldTPF
 {
@@ -128,8 +129,7 @@ namespace ArinaWorldTPF
 
                     }
 
-                    Brush brush;
-                    //g.DrawPolygon(pen, points);
+                    Brush brush;                    
                     if (Var.Map.Grids[i, j].SurfaceFeature == Geography.SurfaceFeatures["Sea"])
                     {
                         brush = new SolidBrush(Color.Blue);
@@ -207,6 +207,23 @@ namespace ArinaWorldTPF
             Redraw();
         }
 
+        public void CenterCamera()
+            => CenterCamera(Var.SelectedBlock, Setting.AmplificationFactor);
+
+        public void CenterCamera(Point p, int amplificationFactor = 50)
+        {   
+            double multipierY = Math.Cos((double)Var.RotateAngleY / 180);
+            double multipierZ1 = Math.Cos((double)Var.RotateAngleZ / 180);
+            double multipierZ2 = Math.Sin((double)Var.RotateAngleZ / 180);
+            Setting.AmplificationFactor = amplificationFactor;
+            Point r = AmplificationTransform(p, Setting.AmplificationFactor);
+            r = new Point(r.X + Setting.AmplificationFactor / 2, r.Y + Setting.AmplificationFactor / 2);
+            r = RotateTransform(r, multipierY, multipierZ1, multipierZ2);
+            Var.TransformX = pibMain.Width / 2 - r.X;
+            Var.TransformY = pibMain.Height / 2 - r.Y;
+            pibMain.Invalidate();
+        }
+
         private void MapForm_Load(object sender, EventArgs e)
         {
            
@@ -226,6 +243,9 @@ namespace ArinaWorldTPF
                     break;
                 case 's':
                     RotateDown();
+                    break;
+                case 'x':
+                    CenterCamera();
                     break;
 
             }
@@ -293,9 +313,7 @@ namespace ArinaWorldTPF
             double multipierZ1 = Math.Cos((double)Var.RotateAngleZ / 180);
             double multipierZ2 = Math.Sin((double)Var.RotateAngleZ / 180);
             int transformX = Var.TransformX;
-            int transformY = Var.TransformY;
-
-            
+            int transformY = Var.TransformY;            
             Point p = new Point(e.X, e.Y);
 
             p = TraslateTransformInverse(p, transformX, transformY);
