@@ -62,9 +62,6 @@ namespace ArinaWorldTPF
 
         public void DrawMap(Graphics g)
         {
-            //BufferedGraphicsManager bgm = BufferedGraphicsManager.Current.;
-            //BufferedGraphics buffergraph = new BufferedGraphicsContext();
-            //BufferedGraphicsContext context = BufferedGraphicsManager.Current;
             Pen pen = new Pen(Color.Black, 2);
             Point[] points;
             if (Var.Map == null || Var.Map.Grids == null)
@@ -165,6 +162,12 @@ namespace ArinaWorldTPF
 
             }
             g.DrawPolygon(new Pen(Color.White, 2), points);
+
+            //Draw Buffer
+            //if(Var.bufferGraphics.Graphics.IsVisible())
+            if(Var.DrawBuffer)
+                Var.bufferGraphics.Render(g);
+
             g.Flush();
         }
 

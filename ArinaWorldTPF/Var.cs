@@ -19,6 +19,10 @@ namespace ArinaWorldTPF
         public static int RotateAngleY { get; set; } = 0;
         public static int RotateAngleZ { get; set; } = 0;
 
+        public static BufferedGraphics bufferGraphics { get; set; }
+
+        public static bool DrawBuffer { get; set; } = false;
+
         public static string CustomDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Arina World");
     }
 }

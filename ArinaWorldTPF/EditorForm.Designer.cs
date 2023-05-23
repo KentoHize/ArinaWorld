@@ -51,6 +51,7 @@
             toolTip = new ToolTip(components);
             saveFileDialog = new SaveFileDialog();
             openFileDialog = new OpenFileDialog();
+            tmiDrawPicture = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             statusStrip.SuspendLayout();
             SuspendLayout();
@@ -127,7 +128,7 @@
             // 
             // tmiTest
             // 
-            tmiTest.DropDownItems.AddRange(new ToolStripItem[] { tmiProducePangea });
+            tmiTest.DropDownItems.AddRange(new ToolStripItem[] { tmiProducePangea, tmiDrawPicture });
             tmiTest.Name = "tmiTest";
             tmiTest.Size = new Size(129, 24);
             tmiTest.Text = "AWE_TMI_TEST";
@@ -149,14 +150,14 @@
             // tmiZH_TW
             // 
             tmiZH_TW.Name = "tmiZH_TW";
-            tmiZH_TW.Size = new Size(215, 26);
+            tmiZH_TW.Size = new Size(224, 26);
             tmiZH_TW.Text = "AWE_TMI_ZH_TW";
             tmiZH_TW.Click += tmiZH_TW_Click;
             // 
             // tmiEN_US
             // 
             tmiEN_US.Name = "tmiEN_US";
-            tmiEN_US.Size = new Size(215, 26);
+            tmiEN_US.Size = new Size(224, 26);
             tmiEN_US.Text = "AWE_TMI_EN_US";
             tmiEN_US.Click += tmiEN_US_Click;
             // 
@@ -170,7 +171,7 @@
             // tmiAbout
             // 
             tmiAbout.Name = "tmiAbout";
-            tmiAbout.Size = new Size(222, 26);
+            tmiAbout.Size = new Size(224, 26);
             tmiAbout.Text = "AWE_ABOUT_AWE";
             tmiAbout.Click += tmiAbout_Click;
             // 
@@ -194,6 +195,13 @@
             // openFileDialog
             // 
             openFileDialog.FileName = "openFileDialog1";
+            // 
+            // tmiDrawPicture
+            // 
+            tmiDrawPicture.Name = "tmiDrawPicture";
+            tmiDrawPicture.Size = new Size(224, 26);
+            tmiDrawPicture.Text = "繪製圖片";
+            tmiDrawPicture.Click += tmiDrawPicture_Click;
             // 
             // EditorForm
             // 
@@ -240,6 +248,7 @@
         private ToolStripMenuItem tmiTool;
         private ToolStripMenuItem tmiEN_US;
         private ToolStripMenuItem tmiZH_TW;
+        private ToolStripMenuItem tmiDrawPicture;
     }
 }
 

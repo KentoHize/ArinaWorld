@@ -17,11 +17,16 @@ namespace ArinaWorldTPF
 {
     public partial class EditorForm : Form
     {
+
+
         private int childFormNumber = 0;
 
         public EditorForm()
         {
-            InitializeComponent();
+            InitializeComponent();  
+            
+            //Buffer Setting
+            
         }
 
         public void PatchLanguageText()
@@ -79,7 +84,6 @@ namespace ArinaWorldTPF
 
         private void tmiProducePangea_Click(object sender, EventArgs e)
         {
-            //Var.Map = new Map("aa", 200, 200);
             Setting.AmplificationFactor = 50;
             Geography.ProducePangeaGeography(Var.Map, Var.Map.Height, Var.Map.Width, 1,
                 CompassDirection.North, 2, 28, TwoWayCompassDirection.EastWest, 1000);
@@ -97,21 +101,32 @@ namespace ArinaWorldTPF
             Var.Map = new Map(NewMapForm.MapName, NewMapForm.MapWidth, NewMapForm.MapHeight);
             Setting.AmplificationFactor = 50;
             Var.RotateAngleY = 180;
-            Var.RotateAngleZ = 150;            
+            Var.RotateAngleZ = 150;
             Var.SelectedBlock = new Point(NewMapForm.MapWidth / 2 - 1, NewMapForm.MapHeight / 2 - 1);
-            
+
             if (Var.MapForm != null)
             {
                 Var.MapForm.CenterCamera();
                 Var.MapForm.Text = NewMapForm.MapName;
                 return;
-            }                
+            }
             Var.MapForm = new MapForm();
             Var.MapForm.Text = NewMapForm.MapName;
-            Var.MapForm.MdiParent = this;            
-            Var.MapForm.WindowState = FormWindowState.Maximized;            
+            Var.MapForm.MdiParent = this;
+            Var.MapForm.WindowState = FormWindowState.Maximized;
             Var.MapForm.Show();
             Var.MapForm.CenterCamera();
+        }
+
+        private void tmiDrawPicture_Click(object sender, EventArgs e)
+        {
+            BufferedGraphicsContext bgc = BufferedGraphicsManager.Current;
+            bgc.MaximumBuffer = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+            Var.bufferGraphics = bgc.Allocate(CreateGraphics(), new Rectangle(200, 200, 200, 200));
+            Var.bufferGraphics.Graphics.DrawImage(Image.FromFile(Path.Combine(Const.ImagePath, "Annette.jpg")), new Point(20, 20));
+            Var.DrawBuffer = true;
+            if(Var.MapForm != null)
+                Var.MapForm.Invalidate();
         }
     }
 }

@@ -12,6 +12,8 @@ namespace ArinaWorldTPF
 
         public const string DataPath = @"C:\Programs\ArinaWorld\ArinaWorldTPF\Data\";
 
+        public const string ImagePath = @"C:\Programs\ArinaWorld\ArinaWorldTPF\Image\";
+
         public const string VersionString = "Version 0.02";
 
         public const string AuthorString = "日瀬健人(Kento Hize)";
