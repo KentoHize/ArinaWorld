@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArinaWorldTPF", "ArinaWorld
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArinaWorldTest", "ArinaWorldTest\ArinaWorldTest.csproj", "{7E92DCC1-3658-4C53-9F74-FD6E6221B972}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterBuild", "CharacterBuild\CharacterBuild.csproj", "{D4B4E610-C609-4634-BF29-AC23E0CCDA9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7E92DCC1-3658-4C53-9F74-FD6E6221B972}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E92DCC1-3658-4C53-9F74-FD6E6221B972}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E92DCC1-3658-4C53-9F74-FD6E6221B972}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B4E610-C609-4634-BF29-AC23E0CCDA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B4E610-C609-4634-BF29-AC23E0CCDA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B4E610-C609-4634-BF29-AC23E0CCDA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B4E610-C609-4634-BF29-AC23E0CCDA9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
