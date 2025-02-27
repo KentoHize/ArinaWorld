@@ -1,0 +1,32 @@
+[
+  {
+    "ID": 1,
+    "Name": "Strength",
+    "CName": "力量"
+  },
+  {
+    "ID": 2,
+    "Name": "Dexterity",
+    "CName": "敏捷"
+  },
+  {
+    "ID": 3,
+    "Name": "Intelligence",
+    "CName": "智力"
+  },
+  {
+    "ID": 4,
+    "Name": "Sense",
+    "CName": "感知"
+  },
+  {
+    "ID": 5,
+    "Name": "Destiny",
+    "CName": "命運"
+  },
+  {
+    "ID": 6,
+    "Name": "Appearance",
+    "CName": "容貌"
+  }
+]

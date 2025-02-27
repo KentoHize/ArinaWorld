@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lblStr = new Label();
             SuspendLayout();
             // 
-            // label1
+            // lblStr
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(36, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 19);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            lblStr.AutoSize = true;
+            lblStr.Location = new Point(316, 126);
+            lblStr.Name = "lblStr";
+            lblStr.Size = new Size(39, 19);
+            lblStr.TabIndex = 0;
+            lblStr.Text = "力量";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1241, 547);
-            Controls.Add(label1);
+            Controls.Add(lblStr);
             Name = "MainForm";
             Text = "Form1";
             ResumeLayout(false);
@@ -54,6 +54,6 @@
 
         #endregion
 
-        private Label label1;
+        private Label lblStr;
     }
 }
